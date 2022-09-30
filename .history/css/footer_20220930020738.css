@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+.footer{
+   margin-top: -10px;
+   width: 100%;
+   padding: 80px 15%;
+   background-color: rgb(41, 39, 39);
+   color: #efefef;
+   display: flex;
+}
+
+@media screen and (max-width: 1200px) {
+   .footer {
+       flex-direction: column;
+   }
+}
+
+.footer div a{
+   font-family: Monstserrat-SemiBold;
+   margin: 20px;
+}
+
+.footer div h3{
+   font-weight: 300;
+   margin-bottom: 30px;
+   letter-spacing: 1px;
+   font-size: 22px;
+   font-family: Monstserrat-Bold;
+}
+
+.infoBar a{
+   display: block;
+   text-decoration: none;
+   color: #efefef;
+   margin-bottom: 10px;
+   font-family: Monstserrat-Bold;
+   font-size: 14px;
+}
+
+.infoBar a:hover{
+   color: #08f4dc;
+}
+
+.socialMedia-icons{
+   margin-top: 30px;
+}
+
+.mapouter{
+   float: left;
+}
+
+.googleMap{
+   background-color: rgb(41, 39, 39);
+}
+
+.footer .infoBar a{
+   margin-bottom: 40px;
+}
+
+.locBar p{
+	font-family: 'Comfortaa', cursive;
+}
+
+.locBar img{
+   width: 50px;
+   height: 50px;
+}
+
+.locBar img:hover{
+   transform: scale(1.2); 
+}
+
+.copyright p{
+   background-color: black;
+   color: white;
+   text-align: center;
+}

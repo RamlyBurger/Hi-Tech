@@ -1,0 +1,20 @@
+.membershipBox {
+  width: 100%;
+}
+
+.membershipBox h1 {
+  margin: auto;
+  text-align: center;
+  display: block;
+}
+
+.boxes {
+  justify-items: center;
+  display: flex;
+  text-align: center;
+}
+
+.box {
+  width: 35%;
+  border: 2px solid black;
+}

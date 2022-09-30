@@ -1,0 +1,53 @@
+.aboutusBackgrd {
+    background-image: linear-gradient(rgba(0,0,0,0.95),rgba( 0,0,0,0.5)),url(../images/background-image.png);
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+}
+
+.contents {
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.aboutusheading {
+    margin: 3rem 0rem;
+    font-size: 4rem;
+}
+
+.contents > * {
+    color: white;
+    font-family: Quicksand;
+}
+
+.dropdownans {
+    max-width: 30px;
+}
+
+.faqs {
+    max-width: 700px;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid white;
+    cursor: pointer;
+}
+
+.ques {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ques h3 {
+    font-size: 1.5rem;
+}
+
+.answer p {
+    padding-top: 1rem;
+    line-height: 1.6;
+    font-size: 1.4rem;
+}

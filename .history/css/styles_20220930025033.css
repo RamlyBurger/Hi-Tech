@@ -1,0 +1,40 @@
+@font-face {
+    font-family: Monstserrat-Bold;
+    src: url(../fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: Monstserrat-SemiBold;
+    src: url(../fonts/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Monstserrat-Light;
+    src: url(../fonts/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: Quicksand;
+    src: url(../fonts/Quicksand_Book.otf);
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url(../fonts/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: Comfortaa;
+    src: url(../fonts/Comfortaa-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

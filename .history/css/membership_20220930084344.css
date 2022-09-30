@@ -1,0 +1,46 @@
+.membershipBox > *{
+  width: 100%;
+  font-family: Monstserrat-Bold
+}
+
+.membershipBox h1 {
+  margin: auto;
+  text-align: center;
+  display: block;
+}
+
+.boxes {
+  justify-items: center;
+  display: flex;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.box {
+  width: 25%;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: auto;
+}
+
+.box p {
+  padding: 10px;
+  padding-left: 80px;
+  text-align: left;
+}
+
+.buttonSubscribe {
+  height: 50px;
+  width: 225px;
+  position: inherit;
+  border-radius: 25px;
+  border: 3px solid #5e5cd8;
+  position: relative;
+  font-size: 17px;
+  overflow: hidden;
+  background: transparent;
+  color: #5e5cd8;
+  cursor: pointer;
+  font-family: Monstserrat-Bold;
+  box-shadow: 4px 4px;
+}

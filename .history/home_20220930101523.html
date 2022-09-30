@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="icon/logo.png" />
+    <title>Hi Tech Company</title>
+    <link href="css/footer.css" rel="stylesheet"/>
+    <link href="css/header.css" rel="stylesheet"/>
+    <link href="css/home.css" rel="stylesheet"/>
+    <link href="css/slideshow.css" rel="stylesheet"/>
+    <link href="css/hello.css" rel="stylesheet"/>
+    <script src="js/hello.js" defer></script>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/c9816d60d5.js" crossorigin="anonymous"></script>
+    <script src="js/slideshow.js" defer></script>
+    <script src="js/simpleFunction.js" defer></script>
+</head>
+<body>
+<!-- Header -->
+  <header>
+    <div class="navbar">
+      <a style="float:right" href="login.html">&nbspACCOUNT&nbsp&nbsp</a>
+        <a href="login.html"><img src="icon/login.svg" class="navbar" style="float:right"/></a>
+    </div>
+    <div class="banner">
+      <div class="navbar2">
+        <a href="home.html"><img src="icon/logo.png" class="logo" id="logo" onmouseover="logoHover()" onmouseout="logoUnhover()" /></a>
+        <a href="home.html"><img src="icon/logo2.png" alt="Hi-Tech" class="logo2" id="logo2" onmouseover="logo2Hover()" onmouseout="logo2Unhover()" /></a>
+          <ul>
+              <li><a href="home.html">Home</a></li>
+            <div>
+              <li><a class="productLink" href="products.html">Products</a></li>
+              <div class="navbar2dropdown-content">
+                <a href="proDesktop.html">Desktop</a>
+                <a href="proLaptop.html">Laptop</a>
+                <a href="proSmartphones.html">Smartphone</a>
+                <a href="proAccessories.html">Accessories</a>
+              </div>
+            </div>
+            <div>
+            <li><a href="events.html">Events</a></li>
+            <div class="navbar2dropdown-content">
+              <a href="Schedule.html">Schedule</a>
+              <a href="Promotions.html">Promotions</a>
+              <a href="Activities.html">Activities</a>
+            </div>
+          </div>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="feedback.html">feedback</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about us.html">About us</a></li>
+          </ul>
+        <form class="searchBar">
+          <input type="text" placeholder="Search" id="searchContent" />
+          <button type="submit" onclick="searchBar()"><img src="icon/magnifier.png"></button>
+        </form>
+      </div>
+    </div>
+</header>
+
+<section>
+  <img src="images/homeMap.png" class="homeMap" usemap="#homeMap" width="992" height="791"/>
+  <div class="heading">
+    <h1>We provide everything<br />ready for you</h1>
+    <a href="events.html"><button><span></span>What's New?</button></a>
+  </div>
+  <map name="workmap">
+    <area shape="rect" coords="1,1,992,791" alt="faq" href="faq.html" style="border: 1px solid black;">
+    <area shape="poly" coords="290,172,333,250" alt="about us" href="about us.html">
+  </map>
+</section>
+
+
+<div class="homeBackground">
+<!-- company name shows -->
+<div class="word">
+  <span>H</span>
+  <span>I</span>
+  <span>-</span>
+  <span>T</span>
+  <span>E</span>
+  <span>C</span>
+  <span>H</span>
+  <h3 class="fixed"><em>Click the letters!</em></h3>
+</div>
+
+   <!-- slideshow -->
+   <section aria-label="Computer gadjet">
+    <div class="carousel" data-carousel>
+      <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
+      <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
+  
+    <ul data-slides>
+      <li class="slide" data-active>
+        <img src="images/home1.jpg" alt="Image" usemap="#slideshow1" >
+      </li>
+      <li class="slide">
+        <img src="images/home2.jpg" alt="Image" usemap="#slideshow2">
+      </li>
+      <li class="slide">
+        <img src="images/home3.jpg" alt="Image" usemap="#slideshow3">
+      </li>
+    </ul>
+  </div>
+
+  </section>
+
+<div class="divhr3"></div>
+  <div class="whyus">
+    <p>Why chooses us?</p>
+    <div class="whyus2">
+      <div>
+      <a href="faq.html"><img id="lightIco" src="icon/Lightning.png" onmouseover="whyushover()" onmouseout="whyusunhover()" /></a>
+      <p>Lightning-fast delivery</p>
+      </div>
+      <div>
+      <a href="membership.html"><img id="awardIco" src="icon/Membership.png" onmouseover="whyushover2()" onmouseout="whyusunhover2()" /></a>
+      <p>Membership</p>
+      </div>
+      <div>
+      <a href="feedback.html"><img id="serviceIco" src="icon/Services.png" onmouseover="whyushover3()" onmouseout="whyusunhover3()" /></a>
+      <p>After-sales Service</p>
+      </div>
+    </div>
+  </div>
+
+<!-- video slideshow -->
+<div class="video1">
+  <video controls loop autoplay muted>
+    <source src="vid/homeAds.mp4" type="video/mp4">
+    <source src="vid/homeAds.mp3" type="audio/mpeg">
+  </video>
+</div>
+
+
+<!-- google store and apple icon -->
+<div class="googleApp">
+  <a href="https://www.playstore.com/" target="_blank"><img src="icon/playstore.png" alt="playstore" ></a>
+  <a href="https://www.apple.com/app-store/" target="_blank"><img src="icon/appstore.png" alt="appstore" ></a>
+</div>
+
+<!-- footer -->
+<footer>
+	<div class="footer">
+		<div class="infoBar">
+			<h3>Navigation</h3>
+			<a href="home.html">Home</a>
+      <a href="membership.html">Membership</a>
+			<a href="payment.html">Payment</a>
+			<a href="cart.html">Cart</a>
+			<a href="login.html">Login</a>
+		</div>
+    
+    <div class="infoBar">
+      <h3>Information</h3>
+      <a href="products.html">Products</a>
+      <a href="events.html">Events</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about us.html">About us</a>
+		</div>
+    
+    <div class="infoBar">
+      <h3>Product</h3>
+      <a href="proDesktop.html">Desktop</a>
+      <a href="proLaptop.html">Laptop</a>
+      <a href="proSmartphones.html">Smartphones</a>
+      <a href="proAccessories.html">Accessories</a>
+		</div>
+			
+    <div class="gmap_canvas">
+      <h3>Contact Us</h3>
+      <p>Tel: <a href="tel:+6012-3456789">+6012-3456789</a></p>
+      <p>email: <a href="mailto:ramly@tarc.edu.my">ramly@tarc.edu.my</a></p><br />
+      <p>Jalan Segamat / Labis,<br />85000, Segamat, <br />Johor</p>
+      <a href="https://facebook.com/" target="_blank"><img src="icon/fb.png"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="icon/insta.png"></a>
+      <a href="https://youtube.com/" target="_blank"><img src="icon/yt.png"></a>
+      <a href="https://twitter.com/" target="_blank"><img src="icon/twitter.png"></a>
+      <a href="https://reddit.com/" target="_blank"><img src="icon/reddit.png"></a>
+      </div>
+
+      <div class="mapouter">
+      <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=tarc%20jo&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+      </div>
+    </div>
+	  </div>
+	</div>
+	<div class="copyright">
+		<p><em>@ 2022 HI Tech Company Sdn.Bhd.All Right Reserved</em></p>
+	</div>
+</footer>
+</body>
+</html>

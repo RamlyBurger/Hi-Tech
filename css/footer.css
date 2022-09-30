@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+.footer{
+   margin-top: -10px;
+   width: 100%;
+   padding: 20px 5%;
+   background-color: rgb(41, 39, 39);
+   color: #efefef;
+   display: flex;
+   justify-content: center;
+}
+
+@media screen and (max-width: 1450px) {
+   .footer {
+       flex-direction: column;
+   }
+}
+
+.footer div {
+   margin: 25px;
+   align-items: center;
+}
+
+.footer div a{
+   font-family: Monstserrat-Light;
+}
+
+.footer div h3{
+   font-weight: 300;
+   margin-bottom: 30px;
+   letter-spacing: 1px;
+   font-size: 22px;
+   font-family: Monstserrat-Bold;
+}
+
+.infoBar a{
+   display: block;
+   text-decoration: none;
+   color: #efefef;
+   margin: 1vw 0px;
+   font-family: Monstserrat-Bold;
+   font-size: 14px;
+}
+
+.infoBar a:hover{
+   color: #08f4dc;
+}
+
+.googleMap{
+   background-color: rgb(41, 39, 39);
+}
+
+.gmap_canvas img{
+   margin-top: 1vw;
+   width: 50px;
+   height: 50px;
+}
+
+.gmap_canvas img:hover{
+   transform: scale(1.2); 
+}
+
+.gmap_canvas p, .gmap_canvas a {
+   word-spacing: 2px;
+   line-height: 23px;
+   font-family: Comfortaa;
+   text-decoration: none;
+   color: white;
+}
+
+.gmap_canvas a:hover {
+   color: #08f4dc;
+}
+
+.mapouter {
+   position:relative;
+   height:370px;
+   width:380px;
+}
+
+#gmap_canvas {
+   overflow:hidden;
+   background:none!important;
+   height:370px;
+   width:380px;
+}
+
+.copyright p{
+   background-color: black;
+   color: white;
+   text-align: center;
+}

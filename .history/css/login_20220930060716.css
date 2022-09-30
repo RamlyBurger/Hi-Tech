@@ -1,0 +1,109 @@
+@media screen and (max-width: 1200px) {
+  .loginContent {
+    flex-direction: column;
+  }
+}
+
+.loginBackgrn {
+  background-image: linear-gradient(to right,rgba(0,0,0,0.95),rgba(0,0,0,0.5)),url(../images/background-image.png);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.loginContent {
+  text-align: center;
+  display: flex;
+  padding: 300px 0px;
+  justify-content: center;
+}
+
+.left {
+  background-color: white;
+  align-items: center;
+  border-radius: 10px;
+  margin: 50px auto;
+  padding: 25px;
+}
+
+.right {
+  background-color: white;
+  align-items: center;
+  border-radius: 10px;
+  margin: auto;
+  margin: 50px auto;
+  padding: 25px;
+}
+
+.loginContent div form h1.title {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.inputBox {
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+  border: transparent;
+  padding-left: 25px;
+}
+
+.inputBox::placeholder {
+  color: #aaa;
+}
+
+.inputBox:focus {
+  outline: none;
+}
+
+.otherOpt {
+  font-size: 1rem;
+  padding: 1rem 0;
+}
+
+.Appicons {
+  display: flex;
+  justify-content: center;
+}
+
+.Appicons a img {
+  height: 46px;
+  width: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.45rem;
+  transition: 0.2s;
+}
+
+.Appicons a img:hover {
+  transform: scale(1.2); 
+}
+
+.btn {
+  width: 150px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background-color: #2b5aaa;
+}

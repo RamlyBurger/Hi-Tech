@@ -1,0 +1,13 @@
+.backgroundaboutus {
+    background-image: linear-gradient(to right,rgba(0,0,0,0.95),rgba(0,0,0,0.5)),url(../images/background-image.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.backgroundaboutus div img {
+    width: 100%;
+    margin-bottom: 100px;
+}

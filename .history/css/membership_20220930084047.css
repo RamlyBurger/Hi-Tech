@@ -1,0 +1,30 @@
+.membershipBox > *{
+  width: 100%;
+  font-family: Monstserrat-Bold
+}
+
+.membershipBox h1 {
+  margin: auto;
+  text-align: center;
+  display: block;
+}
+
+.boxes {
+  justify-items: center;
+  display: flex;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.box {
+  width: 25%;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: auto;
+}
+
+.box p {
+  padding: 10px;
+  padding-left: 60px;
+  text-align: left;
+}

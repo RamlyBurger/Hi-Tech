@@ -1,0 +1,182 @@
+.subscribePanel {
+  position: relative;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.responsiveBox {
+  width: -1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 48rem) {
+  .maxWidthRes {
+    max-width: 48rem;
+  }
+}
+@media (min-width: 64rem) {
+  .maxWidthRes {
+    max-width: 64rem;
+  }
+}
+@media (min-width: 80rem) {
+  .maxWidthRes {
+    max-width: 80rem;
+  }
+}
+
+.desBox {
+  text-align: center;
+  margin-bottom: 3.25rem;
+}
+
+.desBox h1 {
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-size: 45px;
+}
+
+.desBox p {
+  line-height: 1.4;
+  margin-bottom: 0;
+  font-size: 22px;
+}
+
+.descriptionBox {
+  color: grey;
+}
+
+.toggleButPlan {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  font-family: Monstserrat-SemiBold;
+}
+
+.radio-switch {
+  position: relative;
+  display: inline-block;
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 70em;
+  background-color: hsl(210, 4%, 89%);
+}
+.radio-switch:focus-within, .radio-switch:active {
+  box-shadow: 0 0 0 2px hsla(204, 28%, 7%, 0.15);
+}
+
+.radio-switch__item {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  width: 90px;
+}
+
+.radio-switch__label {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.radio-switch__input:checked ~ .radio-switch__label {
+  color: white;
+}
+
+.radio-switch__input:focus ~ .radio-switch__label {
+  background-color: hsl(237, 68%, 0.282);
+}
+
+.radio-switch__label :not(*):focus-within, .radio-switch__input:focus ~ .radio-switch__label {
+  background-color: transparent;
+}
+
+.radio-switch__marker {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: -100%;
+  border-radius: 50em;
+  background-color: blue;
+  height: 40px;
+  width: 90px;
+  box-shadow:  0 0.9px 1.5px rgba(0, 0, 0, 0.03),
+  0 3.1px 5.5px rgba(0, 0, 0, 0.08),
+  0 14px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s;
+}
+.radio-switch__input:checked ~ .radio-switch__marker {
+  transform: translateX(100%);
+}
+
+.sr-only, .sr-only-focusable:not(:focus):not(:focus-within) {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+}
+
+.p-table__price span {
+  font-size: var(--text-xxxl);
+  font-weight: bold;
+}
+.p-table__price i {
+  color: hsl(210, 2%, 64%);
+}
+
+.p-table__features li {
+  margin-bottom: var(--space-xs);
+}
+
+.p-table__switch {
+  display: none;
+}
+
+.js .p-table--has-switch .p-table__price-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.js .p-table--has-switch .p-table__price {
+  will-change: transform;
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.js .p-table--has-switch .p-table__price[data-transition-delay="2nd"] {
+  transition-delay: 0.1s;
+}
+.js .p-table--has-switch .p-table__price[data-transition-delay="3rd"] {
+  transition-delay: 0.2s;
+}
+.js .p-table--has-switch .p-table__price--month {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.js .p-table--has-switch .p-table__price--year {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(100%);
+}
+.js .p-table--yearly .p-table__price--month {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.js .p-table--yearly .p-table__price--year {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}

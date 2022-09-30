@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cart</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/carts.css">
+    <link href="css/footer.css" rel="stylesheet"/>
+    <link href="css/header.css" rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <script src="js/simpleFunction.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+	<div class="navbar">
+	  <a style="float:right" href="login.html">&nbspACCOUNT&nbsp&nbsp</a>
+		<a href="login.html"><img src="icon/login.svg" class="navbar" style="float:right"/></a>
+	</div>
+	<div class="banner">
+	  <div class="navbar2">
+		<a href="home.html"><img src="icon/logo.png" class="logo" id="logo" onmouseover="logoHover()" onmouseout="logoUnhover()" /></a>
+		<a href="home.html"><img src="icon/logo2.png" alt="Hi-Tech" class="logo2" id="logo2" onmouseover="logo2Hover()" onmouseout="logo2Unhover()" /></a>
+		  <ul>
+			  <li><a href="home.html">Home</a></li>
+			<div>
+			  <li><a class="productLink" href="products.html">Products</a></li>
+			  <div class="navbar2dropdown-content">
+				<a href="proDesktop.html">Desktop</a>
+				<a href="proLaptop.html">Laptop</a>
+				<a href="proSmartphones.html">Smartphone</a>
+				<a href="proAccessories.html">Accessories</a>
+			  </div>
+			</div>
+			<div>
+			<li><a href="events.html">Events</a></li>
+			<div class="navbar2dropdown-content">
+			  <a href="Schedule.html">Schedule</a>
+			  <a href="Promotions.html">Promotions</a>
+			  <a href="Activities.html">Activities</a>
+			</div>
+		  </div>
+			<li><a href="membership.html">Membership</a></li>
+			<li><a href="payment.html">Payment</a></li>
+			<li><a href="cart.html">Cart</a></li>
+			<li><a href="feedback.html">feedback</a></li>
+			<li><a href="faq.html">FAQ</a></li>
+			<li><a href="about us.html">About us</a></li>
+		  </ul>
+		<form class="searchBar">
+		  <input type="text" placeholder="Search" id="searchContent" />
+		  <button type="submit" onclick="searchBar()"><img src="icon/magnifier.png"></button>
+		</form>
+	  </div>
+	</div>
+  </header>
+
+
+<div class="bground">
+<div class="container">
+	<h1>Dell XPS 8950</h1>
+	<div class="cart">
+		<div class="products">
+			<div class="product">
+				<img src="images/desktop1.jpg">
+				<div class="product-info">
+					<h3 class="product-name">New Desktop</h3>
+					<h4 class="product-price">Rm11000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+            <h1>HP Omen 45L</h1>
+			<div class="product">
+				<img src="images/desktop2.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm3500</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>HP Pavilion Gaming Desktop</h1>
+			<div class="product">
+				<img src="images/desktop3.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm11000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Falcon Northwest Tiki</h1>
+			<div class="product">
+				<img src="images/desktop4.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm7699</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>ROG STRIX G15</h1>
+			<div class="product">
+				<img src="images/rog1.png">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm5000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>TUF Gaming F15</h1>
+			<div class="product">
+				<img src="images/tuf1.png">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm4199</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Apple Macbook1</h1>
+			<div class="product">
+				<img src="images/macbook1.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">RM4399</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>HP Victus 16</h1>
+			<div class="product">
+				<img src="images/victus2.png">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">RM3700</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Lenovo Legion </h1>
+			<div class="product">
+				<img src="images/phone1.png">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm6000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Lenovo Legion </h1>
+			<div class="product">
+				<img src="images/desktop2.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm6000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Lenovo Legion </h1>
+			<div class="product">
+				<img src="images/desktop2.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm6000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Lenovo Legion </h1>
+			<div class="product">
+				<img src="images/desktop2.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm6000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Lenovo Legion </h1>
+			<div class="product">
+				<img src="images/desktop2.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm6000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Lenovo Legion </h1>
+			<div class="product">
+				<img src="images/desktop2.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm6000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Lenovo Legion </h1>
+			<div class="product">
+				<img src="images/desktop2.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm6000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+			<h1>Lenovo Legion </h1>
+			<div class="product">
+				<img src="images/desktop2.jpg">
+				<div class="product-info">
+					<h3 class="product-name">Brand new laptop</h3>
+					<h4 class="product-price">Rm6000</h4>
+					<h4 class="product-offer">discount 10%</h4>
+					<p class="product-quantity">Qnt: <input value="1" name="">
+					<p class="product-remove">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+						<span class="remove">Remove</span>
+					</p>
+				</div>
+			</div>
+
+		</div>
+</div>
+		<div class="cart-total">
+			<p>
+				<span>Total Price</span>
+				<span>Rm 0 </span>
+			</p>
+			<p>
+				<span>Number of Items</span>
+				<span>0</span>
+			</p>
+			<p>
+				<span>You Save</span>
+				<span>Rm 0</span>
+			</p>
+			<a href="payment.html">Proceed to Checkout</a>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- footer -->
+<footer>
+	<div class="footer">
+		<div class="infoBar">
+			<h3>Navigation</h3>
+			<a href="home.html">Home</a>
+      <a href="membership.html">Membership</a>
+			<a href="payment.html">Payment</a>
+			<a href="cart.html">Cart</a>
+			<a href="login.html">Login</a>
+		</div>
+    
+    <div class="infoBar">
+      <h3>Information</h3>
+      <a href="products.html">Products</a>
+      <a href="events.html">Events</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about us.html">About us</a>
+		</div>
+    
+    <div class="infoBar">
+      <h3>Product</h3>
+      <a href="proDesktop.html">Desktop</a>
+      <a href="proLaptop.html">Laptop</a>
+      <a href="proSmartphones.html">Smartphones</a>
+      <a href="proAccessories.html">Accessories</a>
+		</div>
+			
+    <div class="gmap_canvas">
+      <h3>Contact Us</h3>
+      <p>Tel: <a href="tel:+6012-3456789">+6012-3456789</a></p>
+      <p>email: <a href="mailto:ramly@tarc.edu.my">ramly@tarc.edu.my</a></p><br />
+      <p>Jalan Segamat / Labis,<br />85000, Segamat, <br />Johor</p>
+      <a href="https://facebook.com/" target="_blank"><img src="icon/fb.png"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="icon/insta.png"></a>
+      <a href="https://youtube.com/" target="_blank"><img src="icon/yt.png"></a>
+      <a href="https://twitter.com/" target="_blank"><img src="icon/twitter.png"></a>
+      <a href="https://reddit.com/" target="_blank"><img src="icon/reddit.png"></a>
+      </div>
+
+      <div class="mapouter">
+      <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=tarc%20jo&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+      </div>
+    </div>
+	  </div>
+	</div>
+	<div class="copyright">
+		<p><em>@ 2022 HI Tech Company Sdn.Bhd.All Right Reserved</em></p>
+	</div>
+</footer>
+</body>
+</html>

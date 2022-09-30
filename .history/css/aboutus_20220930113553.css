@@ -1,0 +1,38 @@
+.title {
+    font-size: 4rem;
+    color: white;
+    text-align: center;
+    font-family: Monstserrat-Bold;
+    padding: 75px 0px 0px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.titleBox {
+    background-color: black;
+    align-items: center;
+    justify-content:  center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.backgroundaboutus {
+    background-image: linear-gradient(to right,rgba(0,0,0,0.95),rgba(0,0,0,0.5)),url(../images/background-image.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.backgroundaboutus img {
+    width: 100%;
+    margin: 100px 0px;
+}
+
+.image1 {
+    display: block;
+    background-color: white;
+    padding: auto;
+    margin: 50px 0px;
+}
