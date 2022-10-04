@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_DB: hitech
+      POSTGRES_USER: hitech
+      POSTGRES_PASSWORD: hitech
+    ports:
+      - "5432:5432"
+    volumes:
+      - hitech-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hitech -d hitech"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hitech
+      SPRING_DATASOURCE_USERNAME: hitech
+      SPRING_DATASOURCE_PASSWORD: hitech
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+
+volumes:
+  hitech-postgres-data:

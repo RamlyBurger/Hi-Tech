@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: hi-tech-commerce
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/hitech}
+    username: ${SPRING_DATASOURCE_USERNAME:hitech}
+    password: ${SPRING_DATASOURCE_PASSWORD:hitech}
+  flyway:
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  thymeleaf:
+    cache: false
+
+server:
+  port: ${SERVER_PORT:8080}
+
+hitech:
+  payment:
+    simulated: true
