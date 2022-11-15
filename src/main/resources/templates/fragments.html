@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header">
+    <div class="topbar">
+        <a th:if="${currentUser == null}" th:href="@{/login}">Account</a>
+        <span th:if="${currentUser != null}">Signed in as <strong th:text="${currentUser}">customer</strong></span>
+        <a th:if="${currentUser != null}" th:href="@{/orders}">Orders</a>
+        <a th:if="${isAdmin}" th:href="@{/admin}">Admin</a>
+        <form th:if="${currentUser != null}" th:action="@{/logout}" method="post" class="inline-form">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    <nav class="site-nav">
+        <a th:href="@{/}" class="brand">
+            <img th:src="@{/icon/logo.png}" alt="Hi-Tech">
+            <span>Hi-Tech</span>
+        </a>
+        <div class="nav-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/products}">Products</a>
+            <a th:each="category : ${navCategories}"
+               th:href="@{/products/{code}(code=${category.code})}"
+               th:text="${category.name}">Category</a>
+            <a th:href="@{/events}">Events</a>
+            <a th:href="@{/membership}">Membership</a>
+            <a th:href="@{/cart}">Cart <span th:if="${cartCount != null and cartCount > 0}" th:text="'(' + ${cartCount} + ')'">(0)</span></a>
+            <a th:href="@{/feedback}">Feedback</a>
+            <a th:href="@{/faq}">FAQ</a>
+            <a th:href="@{/about}">About us</a>
+        </div>
+        <form th:action="@{/products}" method="get" class="search">
+            <input type="search" name="q" placeholder="Search products" th:value="${query}">
+            <button type="submit">Search</button>
+        </form>
+    </nav>
+</header>
+
+<footer th:fragment="footer" class="site-footer">
+    <div>
+        <h3>Hi-Tech Company</h3>
+        <p>Electronics, gaming hardware, smartphones, desktops, laptops, and accessories.</p>
+    </div>
+    <div>
+        <h3>Contact</h3>
+        <p>Tel: <a href="tel:+6012-3456789">+6012-3456789</a></p>
+        <p>Email: <a href="mailto:ramly@tarc.edu.my">ramly@tarc.edu.my</a></p>
+        <p>Jalan Segamat / Labis, 85000 Segamat, Johor</p>
+    </div>
+    <div>
+        <h3>Shop</h3>
+        <a th:href="@{/products/desktop}">Desktop</a>
+        <a th:href="@{/products/laptop}">Laptop</a>
+        <a th:href="@{/products/smartphone}">Smartphone</a>
+        <a th:href="@{/products/accessories}">Accessories</a>
+    </div>
+</footer>
+</body>
+</html>

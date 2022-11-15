@@ -1,0 +1,150 @@
+body{
+    overflow-x: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+    .whyus2 {
+        flex-direction: column;
+        background-color: rgba(247, 247, 247);
+    }
+    .whyus {
+        position: relative;
+        width: 100%;
+        height: 750px;
+        margin-bottom: 1000px;
+    }
+  }
+
+.homeBackground {
+    background-image: linear-gradient(to right,rgba(0,0,0,0.95),rgba(0,0,0,0.5)),url(../images/background-image.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.heading {
+    margin: 0 5rem;
+}
+
+.homeMap {
+    padding-top: 0px;
+    position: relative;
+    float: right;
+}
+
+.heading h1 {
+    clear: right;
+    color: #5e5cd8;
+    width: 90%;
+    position: relative;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    font-family: Monstserrat-Bold;
+}
+
+.heading button {
+    height: 50px;
+    width: 225px;
+    position: inherit;
+    border-radius: 25px;
+    border: 3px solid #5e5cd8;
+    position: relative;
+    font-size: 17px;
+    overflow: hidden;
+    background: transparent;
+    color: #5e5cd8;
+    cursor: pointer;
+    font-family: Monstserrat-Bold;
+    box-shadow: 4px 4px;
+}
+
+.heading span {
+    background: #5e5cd8;
+    height: 100%;
+    width: 0%;
+    border-radius: 75px;
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.45s;
+}
+
+.heading button:hover {
+    border: none;
+    color: #ffffff;
+}
+
+.heading button:hover span{
+    width:100%;
+}
+
+.whyus {
+    position: relative;
+    background-color: rgba(247, 247, 247);
+    width: 100%;
+    height: 750px;
+    margin-top: 200px;
+}
+
+.whyus p {
+    padding: 100px;
+    font-family: Monstserrat-Bold;
+    position: relative;
+    text-align: center;
+    font-size: 55px;
+}
+
+.whyus2 {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.whyus2 div {
+    display: block;
+    position: relative;
+    margin: 0px 75px;
+    background-color: rgba(247, 247, 247);
+}
+
+.whyus2 div p {
+    font-size: 20px;
+}
+
+.whyus2 div img {
+    max-width: 250px;
+}
+
+/* video slidewhow */
+.video1 video{
+    object-fit: cover;
+    width: 70%;
+    height: 75%;
+    display: block;
+    margin: 50px auto;
+    border: 1px solid black;
+    border-radius: 6px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* google playstore icon */
+.googleApp {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.googleApp img {
+    max-width: 200px;
+    padding-bottom: 100px;
+    transition: 0.25s;
+}
+
+.googleApp img:hover {
+    max-width: 300px;
+    padding-bottom: 100px;
+}

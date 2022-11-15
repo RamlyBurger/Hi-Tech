@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading">
+        <h1>Customer Feedback</h1>
+        <p>Original review content retained as part of the storefront prototype.</p>
+    </section>
+    <section class="review-grid">
+        <article class="review-card">
+            <img th:src="@{/images/bird.jpg}" alt="Ramly Burger">
+            <h2>Ramly Burger</h2>
+            <p>Very nice, have a lot of advanced electronic gadgets and product categories.</p>
+        </article>
+        <article class="review-card">
+            <img th:src="@{/images/girl1.jpg}" alt="Susan">
+            <h2>Susan</h2>
+            <p>I bought a laptop here before. The service was friendly and considerate.</p>
+        </article>
+        <article class="review-card">
+            <img th:src="@{/images/Lee.jpg}" alt="Lee Chong Wei">
+            <h2>Lee Chong Wei</h2>
+            <p>Hi-Tech is really cheap compared to mall prices and has many useful accessories.</p>
+        </article>
+        <article class="review-card">
+            <img th:src="@{/images/cat.gif}" alt="Kin Hang">
+            <h2>Kin Hang</h2>
+            <p>Helpful staff, many accessories to choose from, and quality products.</p>
+        </article>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading">
+        <h1>Membership</h1>
+        <p>The more you take, the more you gain.</p>
+    </section>
+    <section class="plan-grid">
+        <article class="plan-card">
+            <h2>Starter Pack</h2>
+            <p>Free for new customers only.</p>
+            <ul>
+                <li>Limited promotions</li>
+                <li>One-month access</li>
+                <li>No member card</li>
+            </ul>
+            <a class="button" th:href="@{/checkout}">Subscribe now</a>
+        </article>
+        <article class="plan-card emphasized">
+            <h2>Elite Pack</h2>
+            <p>Free for customers who purchased up to RM5,000.</p>
+            <ul>
+                <li>Selected promotions</li>
+                <li>Gift redemption access</li>
+                <li>Member card included</li>
+            </ul>
+            <a class="button primary" th:href="@{/checkout}">Subscribe now</a>
+        </article>
+        <article class="plan-card">
+            <h2>Legend Pack</h2>
+            <p>For customers who purchased up to RM10,000.</p>
+            <ul>
+                <li>Unlimited promotions</li>
+                <li>One-year access</li>
+                <li>Master member card</li>
+            </ul>
+            <a class="button" th:href="@{/checkout}">Subscribe now</a>
+        </article>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

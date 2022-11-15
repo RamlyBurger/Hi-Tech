@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading visual-heading">
+        <div>
+            <h1>About Hi-Tech</h1>
+            <p>Hi-Tech Company is an electronics gadget reseller in Malaysia, founded by TAR University College graduates and focused on practical technology for customers of every age.</p>
+        </div>
+        <img th:src="@{/images/aboutus.png}" alt="Hi-Tech company">
+    </section>
+    <section class="section split">
+        <div>
+            <h2>Our store</h2>
+            <p>Hi-Tech sells laptops, desktops, tablets, smartphones, computer hardware, and accessories from brands such as ASUS, Dell, Lenovo, Apple, Acer, HP, Samsung, OPPO, Kingston, and JBL.</p>
+            <p>The original assignment positions the business as a local electronics reseller with 50 retail stores, a KL headquarters, delivery support, and after-sales services.</p>
+        </div>
+        <div class="image-stack">
+            <img th:src="@{/images/business card.png}" alt="Business card">
+            <img th:src="@{/images/3founder.png}" alt="Founders">
+            <img th:src="@{/images/award.png}" alt="Award">
+        </div>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

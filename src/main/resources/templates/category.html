@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${category.name}">Category</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading visual-heading">
+        <div>
+            <h1 th:text="${category.name}">Category</h1>
+            <p th:text="${category.description}">Description</p>
+        </div>
+        <img th:src="@{${category.imagePath}}" th:alt="${category.name}">
+    </section>
+
+    <section class="product-grid">
+        <article class="product-card" th:each="product : ${products}">
+            <a th:href="@{/products/item/{slug}(slug=${product.slug})}">
+                <img th:src="@{${product.imagePath}}" th:alt="${product.name}">
+            </a>
+            <div>
+                <h3 th:text="${product.name}">Product</h3>
+                <span th:if="${product.discountPercentage > 0}" class="discount" th:text="'-' + ${product.discountPercentage} + '%'">-10%</span>
+                <strong th:text="'RM ' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
+                <a class="button small" th:href="@{/products/item/{slug}(slug=${product.slug})}">View details</a>
+            </div>
+        </article>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

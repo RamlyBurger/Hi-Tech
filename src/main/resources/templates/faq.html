@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading">
+        <h1>Frequently Asked Questions</h1>
+        <p>Answers for membership, online purchase, app installation, promotions, and receipts.</p>
+    </section>
+    <section class="faq-list">
+        <article>
+            <h2>How do I get a free premium account?</h2>
+            <p>Make a single purchase up to RM5,000 to qualify for the free premium account.</p>
+        </article>
+        <article>
+            <h2>How do I install the app on my phone?</h2>
+            <p>Connect to Wi-Fi, then search for Hi-Tech in the Play Store or App Store.</p>
+        </article>
+        <article>
+            <h2>What if I forgot to photograph my receipt?</h2>
+            <p>Reach out to the nearest Hi-Tech branch and request another receipt copy.</p>
+        </article>
+        <article>
+            <h2>How do I apply for a free gift during a promotion?</h2>
+            <p>Purchase the Elite membership package and follow the promotion notification instructions.</p>
+        </article>
+        <article>
+            <h2>How do I make an online purchase?</h2>
+            <p>Browse products, add items to your cart, and proceed to checkout with simulated payment.</p>
+        </article>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

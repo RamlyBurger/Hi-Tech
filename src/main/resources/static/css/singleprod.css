@@ -1,0 +1,189 @@
+
+.singleContainer{
+    width: 100%;
+    min-height: 100vh;
+    background:  linear-gradient(to left,#e6996c,#e9bea8);
+    display: flex;
+    align-items: center;
+    justify-content: center; /*放在正中间用这个*/
+}
+
+.singleProduct{
+    width: 90%;
+    max-width: 750px;
+    display: flex;
+}
+
+.gallery{
+    flex-basis: 47%;
+    background: #241e20;
+    transform: scale(1.08); /*scale (1.0)是正常div大小*/
+    box-shadow: -10px 5px 10px 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.gallery img{
+    width: 400px;
+    display: block;
+    
+}
+
+/* details */
+.details{
+    flex-basis: 53%;
+    background: #fff;
+    padding: 20px;
+    padding-left: 60px;
+    box-shadow: -10px 5px 10px 10px rgba(0,0,0,0.1);
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+}
+
+.details h1{
+    color: #333;
+    font-size: 35px;
+}
+
+.details h2{
+    color: #555;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.details h3{
+    color: #00d874;
+    margin-bottom: 20px;
+}
+
+.details form{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* size */
+.size-select{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.size-select p{
+    width: 70px;
+}
+
+.size-select span{
+    margin-right: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.size-select input:checked + span{
+    color: blue;
+    font-weight: 600;
+}
+
+.size-select input{
+    display: none;
+}
+
+/* color */
+.color-select{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.color-select p{
+    width: 75px;
+}
+
+.color-select span{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.color-1{
+    background: rgb(224, 220, 213);
+}
+
+.color-2{
+    background: black;
+}
+
+.color-select input{
+    display: none;
+}
+
+.color-select input:checked+span{
+    transform: scale(0.7);
+    box-shadow: 0 0 0 4px #fff,0 0 0 6px #000;
+}
+/* quantity */
+.quantity-select{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.quantity-select p{
+    width: 75px;
+}
+
+.quantity-select input{
+    background: rgb(231, 225, 225);
+    border: 0;
+    outline: 0;
+    padding: 2px 2px 2px 15px;
+    width: 50px;
+    border-radius: 12px;
+}
+
+/* buybtn */
+.buy-btn{
+    background: #553ff0;
+    color: #fff;
+    font-size: 17px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    border: 0;
+    outline: 0;
+    margin-top: 20px;
+    box-shadow: 0 10px 10px rgba(85, 63, 240, 0.25);
+    cursor: pointer;
+}
+
+.buy-btn:hover{
+    background: black;
+    color: white;
+    transition-duration: 0.5s;
+    opacity: 0.8;
+
+}
+
+/* img slides */
+.img-controls{
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+}
+
+.btn0,#btn0-control{
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btn0:hover,#btn0-control:hover{
+    background: #553ff0;
+    transition-duration: 0.5s;
+}

@@ -1,0 +1,131 @@
+/* Desktop */
+.productsAll{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left,#bad8e6,#0a3d4e);
+}
+
+.desktopcol{
+    width: 40%;
+    border: 3px solid black ;   
+    margin-left: 125px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        
+}
+
+.desktopcol img{
+    border-radius: 25px;
+}
+
+.producth1{
+    text-align: center;
+}
+
+/* laptop */
+
+.laptopcol{
+    width: 40%;
+    border: 3px solid black ;
+    margin-top: -550px;
+    margin-right: 85px;
+    margin-left: 125px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    float: right;
+}
+
+.laptopcol img{
+    border-radius: 25px;
+}
+
+.producth1{
+    text-align: center;
+}
+
+/* smartphone */
+
+.phonecol{
+    width: 40%;
+    border: 3px solid black ;
+    margin-top: 200px;
+    margin-left: 125px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   
+}
+
+.phonecol img{
+    border-radius: 25px;
+}
+
+.producth1{
+    text-align: center;
+}
+
+/* accesories */
+
+.accesoriescol{
+    width: 40%;
+    border: 3px solid black ;
+    margin-top: -550px;
+    margin-right: 85px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    float: right;
+   
+}
+
+.accesoriescol img{
+    border-radius: 25px;
+}
+
+.producth1{
+    text-align: center;
+}
+
+/* hover */
+
+.partnerlogo img, .productsAll img {
+    border: none;
+    color: white;
+    opacity: 0.6;
+    transition: 0.5s;
+}
+
+.productsAll img:hover, .partnerlogo img:hover {opacity: 1}
+
+/* word */
+
+.partner{
+    margin-bottom: 50px;
+}
+
+.partnerh1 {
+    font-size: 25px;
+    font-family:Lucida Bright;
+    text-align: center;
+    margin-top: 100px;
+    text-decoration: underline;
+    text-shadow: 1px 1px rgb(21, 21, 21);
+}
+
+/* logo */
+.partnerlogo img{
+    background-color: none;
+    margin-right: 55px;
+    margin-left: 55px;
+}
+
+.partnerlogo{
+    margin-bottom: 10px;
+}
+
+/* hr */
+
+.hr4{
+    border: 1px solid rgb(0, 0, 0);
+    width: 95%;
+    margin-left: 30px;
+}
+

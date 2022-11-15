@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading">
+        <h1>Events and Promotions</h1>
+        <p>Schedules and campaigns are now served from the database.</p>
+    </section>
+
+    <section class="section">
+        <h2>Schedule</h2>
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Venue</th>
+                <th>Time</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="event, stat : ${events}">
+                <td th:text="${stat.count}">1</td>
+                <td th:text="${event.name}">Gaming Competition</td>
+                <td th:text="${event.venue}">Segamat</td>
+                <td th:text="${event.eventTime}">08:00</td>
+                <td th:text="${event.eventDate}">2022-10-01</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="section">
+        <h2>Promotions</h2>
+        <div class="promo-list">
+            <article th:each="promotion : ${promotions}" class="promo-card">
+                <span th:text="${promotion.startsOn} + ' to ' + ${promotion.endsOn}">Dates</span>
+                <h3 th:text="${promotion.title}">Promotion</h3>
+                <p>
+                    Promotion on
+                    <strong th:style="'color:' + ${promotion.highlightColor}" th:text="${promotion.productName}">Product</strong>
+                </p>
+                <p th:text="${promotion.description}">Description</p>
+            </article>
+        </div>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

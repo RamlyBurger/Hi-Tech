@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi-Tech Company</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+
+<main>
+    <section class="hero">
+        <div class="hero-copy">
+            <p class="eyebrow">Hi-Tech Commerce</p>
+            <h1>Everything ready for your next setup.</h1>
+            <p>Browse desktops, laptops, smartphones, and accessories from the original Hi-Tech assignment catalog.</p>
+            <div class="actions">
+                <a class="button primary" th:href="@{/products}">Shop products</a>
+                <a class="button" th:href="@{/events}">View events</a>
+            </div>
+        </div>
+        <img th:src="@{/images/homeMap.png}" alt="Hi-Tech service map">
+    </section>
+
+    <section class="section">
+        <div class="section-heading">
+            <h2>Featured products</h2>
+            <a th:href="@{/products}">All products</a>
+        </div>
+        <div class="product-grid">
+            <article class="product-card" th:each="product : ${featuredProducts}">
+                <a th:href="@{/products/item/{slug}(slug=${product.slug})}">
+                    <img th:src="@{${product.imagePath}}" th:alt="${product.name}">
+                </a>
+                <div>
+                    <p th:text="${product.category.name}">Category</p>
+                    <h3 th:text="${product.name}">Product</h3>
+                    <strong th:text="'RM ' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section split">
+        <div>
+            <h2>Why choose us?</h2>
+            <ul class="feature-list">
+                <li>Lightning-fast delivery for selected products.</li>
+                <li>Membership plans with promotion privileges.</li>
+                <li>After-sales support and repair service.</li>
+            </ul>
+        </div>
+        <div class="promo-panel">
+            <h2>Current promotions</h2>
+            <div th:each="promotion : ${promotions}" class="promo-row">
+                <span th:text="${promotion.productName}">Product</span>
+                <strong th:text="${promotion.title}">Promotion</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="media-strip">
+        <video controls loop muted>
+            <source th:src="@{/vid/homeAds.mp4}" type="video/mp4">
+        </video>
+    </section>
+</main>
+
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${product.name}">Product</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="product-detail">
+        <div class="product-gallery">
+            <img th:src="@{${product.detailImagePath}}" th:alt="${product.name}">
+        </div>
+        <div class="product-summary">
+            <p class="eyebrow" th:text="${product.category.name}">Category</p>
+            <h1 th:text="${product.name}">Product</h1>
+            <p th:text="${product.description}">Description</p>
+            <div class="price-row">
+                <strong th:text="'RM ' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
+                <span th:if="${product.discountPercentage > 0}" class="discount" th:text="'-' + ${product.discountPercentage} + '%'">-10%</span>
+            </div>
+            <p th:text="'Stock available: ' + ${product.stock}">Stock available: 0</p>
+            <form th:action="@{/cart/items}" method="post" class="purchase-form">
+                <input type="hidden" name="productId" th:value="${product.id}">
+                <label>
+                    Quantity
+                    <input type="number" name="quantity" value="1" min="1" th:max="${product.stock}">
+                </label>
+                <button type="submit" class="button primary">Add to cart</button>
+            </form>
+        </div>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>
