@@ -426,6 +426,53 @@ button.primary {
     box-shadow: 0 16px 35px rgba(22, 32, 42, 0.1);
 }
 
+.auth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin: 24px 0 40px;
+}
+
+.auth-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.stacked-form {
+    display: grid;
+    gap: 14px;
+}
+
+.alert {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.alert.error {
+    color: #8a1f11;
+    background: #ffe8e2;
+}
+
+.alert.success {
+    color: #155724;
+    background: #d7f6df;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.field-error {
+    color: #8a1f11;
+    display: block;
+    margin-top: 6px;
+    font-size: 0.9rem;
+}
+
 .site-footer {
     display: grid;
     grid-template-columns: 1.2fr 1fr 1fr;
