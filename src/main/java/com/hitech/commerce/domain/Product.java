@@ -1,6 +1,7 @@
 package com.hitech.commerce.domain;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -97,6 +98,15 @@ public class Product {
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    public BigDecimal getSalePrice() {
+        if (discountPercentage == null || discountPercentage <= 0) {
+            return price;
+        }
+        BigDecimal multiplier = BigDecimal.valueOf(100L - discountPercentage)
+                .divide(BigDecimal.valueOf(100), 4, RoundingMode.HALF_UP);
+        return price.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);
     }
 
     public void setPrice(BigDecimal price) {

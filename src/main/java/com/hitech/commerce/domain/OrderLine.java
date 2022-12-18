@@ -46,9 +46,9 @@ public class OrderLine {
     public OrderLine(Product product, int quantity) {
         this.product = product;
         this.productName = product.getName();
-        this.unitPrice = product.getPrice();
+        this.unitPrice = product.getSalePrice();
         this.quantity = quantity;
-        this.lineTotal = product.getPrice().multiply(BigDecimal.valueOf(quantity));
+        this.lineTotal = product.getSalePrice().multiply(BigDecimal.valueOf(quantity));
     }
 
     public Long getId() {

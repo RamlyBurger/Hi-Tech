@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading">
+        <h1>Checkout</h1>
+        <p>Payment is simulated for this assignment prototype.</p>
+    </section>
+
+    <p th:if="${checkoutError}" class="alert error" th:text="${checkoutError}">Checkout error</p>
+
+    <section class="checkout-grid">
+        <article class="auth-card">
+            <h2>Billing details</h2>
+            <form th:action="@{/checkout}" th:object="${checkoutForm}" method="post" class="stacked-form">
+                <label>
+                    Full name
+                    <input type="text" th:field="*{customerName}" required>
+                    <span class="field-error" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}">Error</span>
+                </label>
+                <label>
+                    Email
+                    <input type="email" th:field="*{email}" required>
+                    <span class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</span>
+                </label>
+                <label>
+                    Address
+                    <textarea th:field="*{address}" rows="4" required></textarea>
+                    <span class="field-error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Error</span>
+                </label>
+                <label>
+                    Payment method
+                    <select th:field="*{paymentMethod}">
+                        <option value="Simulated card">Simulated card</option>
+                        <option value="Simulated e-wallet">Simulated e-wallet</option>
+                        <option value="Simulated online banking">Simulated online banking</option>
+                    </select>
+                </label>
+                <button type="submit" class="primary">Complete order</button>
+            </form>
+        </article>
+
+        <article class="auth-card">
+            <h2>Order summary</h2>
+            <div th:each="line : ${lines}" class="summary-item">
+                <span th:text="${line.product.name} + ' x ' + ${line.quantity}">Product</span>
+                <strong th:text="'RM ' + ${#numbers.formatDecimal(line.lineTotal, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
+            </div>
+            <div class="summary-row">
+                <strong th:text="'Total: RM ' + ${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')}">Total</strong>
+            </div>
+        </article>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>
