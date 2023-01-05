@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Events</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading compact-heading">
+        <div>
+            <h1>Events</h1>
+            <p>Manage schedule entries shown on the events page.</p>
+        </div>
+        <a class="button primary" th:href="@{/admin/events/new}">New event</a>
+    </section>
+    <p th:if="${adminMessage}" class="alert success" th:text="${adminMessage}">Saved</p>
+    <section class="section">
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="event : ${events}">
+                <td th:text="${event.name}">Event</td>
+                <td th:text="${event.venue}">Venue</td>
+                <td th:text="${event.eventDate}">Date</td>
+                <td th:text="${event.eventTime}">Time</td>
+                <td th:text="${event.active ? 'Active' : 'Inactive'}">Active</td>
+                <td class="table-actions">
+                    <a class="button small" th:href="@{/admin/events/{id}/edit(id=${event.id})}">Edit</a>
+                    <form th:if="${event.active}" th:action="@{/admin/events/{id}/deactivate(id=${event.id})}" method="post">
+                        <button type="submit">Deactivate</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

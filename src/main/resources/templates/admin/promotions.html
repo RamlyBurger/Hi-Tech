@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Promotions</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading compact-heading">
+        <div>
+            <h1>Promotions</h1>
+            <p>Manage campaign copy shown on the events page.</p>
+        </div>
+        <a class="button primary" th:href="@{/admin/promotions/new}">New promotion</a>
+    </section>
+    <p th:if="${adminMessage}" class="alert success" th:text="${adminMessage}">Saved</p>
+    <section class="section">
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Product</th>
+                <th>Starts</th>
+                <th>Ends</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="promotion : ${promotions}">
+                <td th:text="${promotion.title}">Promotion</td>
+                <td th:text="${promotion.productName}">Product</td>
+                <td th:text="${promotion.startsOn}">Start</td>
+                <td th:text="${promotion.endsOn}">End</td>
+                <td th:text="${promotion.active ? 'Active' : 'Inactive'}">Active</td>
+                <td class="table-actions">
+                    <a class="button small" th:href="@{/admin/promotions/{id}/edit(id=${promotion.id})}">Edit</a>
+                    <form th:if="${promotion.active}" th:action="@{/admin/promotions/{id}/deactivate(id=${promotion.id})}" method="post">
+                        <button type="submit">Deactivate</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

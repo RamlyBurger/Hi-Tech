@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Products</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading compact-heading">
+        <div>
+            <h1>Products</h1>
+            <p>Manage product details, prices, stock, and visibility.</p>
+        </div>
+        <a class="button primary" th:href="@{/admin/products/new}">New product</a>
+    </section>
+    <p th:if="${adminMessage}" class="alert success" th:text="${adminMessage}">Saved</p>
+    <section class="section">
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.name}">Product</td>
+                <td th:text="${product.category.name}">Category</td>
+                <td th:text="'RM ' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">RM 0.00</td>
+                <td th:text="${product.stock}">0</td>
+                <td th:text="${product.active ? 'Active' : 'Inactive'}">Active</td>
+                <td class="table-actions">
+                    <a class="button small" th:href="@{/admin/products/{id}/edit(id=${product.id})}">Edit</a>
+                    <form th:if="${product.active}" th:action="@{/admin/products/{id}/deactivate(id=${product.id})}" method="post">
+                        <button type="submit">Deactivate</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

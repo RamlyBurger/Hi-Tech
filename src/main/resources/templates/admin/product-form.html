@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading">
+        <h1 th:text="${productForm.id == null ? 'New Product' : 'Edit Product'}">Product</h1>
+        <p>Keep product data consistent with the live storefront.</p>
+    </section>
+    <section class="section">
+        <form th:action="@{/admin/products}" th:object="${productForm}" method="post" class="admin-form">
+            <input type="hidden" th:field="*{id}">
+            <label>Slug<input type="text" th:field="*{slug}" required></label>
+            <label>Name<input type="text" th:field="*{name}" required></label>
+            <label>Description<textarea th:field="*{description}" rows="4" required></textarea></label>
+            <div class="form-row">
+                <label>Price<input type="number" step="0.01" min="0" th:field="*{price}" required></label>
+                <label>Discount %<input type="number" min="0" max="95" th:field="*{discountPercentage}" required></label>
+                <label>Stock<input type="number" min="0" th:field="*{stock}" required></label>
+            </div>
+            <label>
+                Category
+                <select th:field="*{categoryId}" required>
+                    <option value="">Select category</option>
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">Category</option>
+                </select>
+            </label>
+            <label>Image path<input type="text" th:field="*{imagePath}" required></label>
+            <label>Detail image path<input type="text" th:field="*{detailImagePath}" required></label>
+            <label class="check-line"><input type="checkbox" th:field="*{active}"> Active</label>
+            <div class="actions">
+                <button type="submit" class="primary">Save product</button>
+                <a class="button" th:href="@{/admin/products}">Cancel</a>
+            </div>
+        </form>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

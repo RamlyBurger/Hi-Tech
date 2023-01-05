@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Form</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading">
+        <h1 th:text="${eventForm.id == null ? 'New Event' : 'Edit Event'}">Event</h1>
+        <p>Event data is served dynamically on the storefront.</p>
+    </section>
+    <section class="section">
+        <form th:action="@{/admin/events}" th:object="${eventForm}" method="post" class="admin-form">
+            <input type="hidden" th:field="*{id}">
+            <label>Name<input type="text" th:field="*{name}" required></label>
+            <label>Venue<input type="text" th:field="*{venue}" required></label>
+            <div class="form-row">
+                <label>Date<input type="date" th:field="*{eventDate}" required></label>
+                <label>Time<input type="time" th:field="*{eventTime}" required></label>
+            </div>
+            <label class="check-line"><input type="checkbox" th:field="*{active}"> Active</label>
+            <div class="actions">
+                <button type="submit" class="primary">Save event</button>
+                <a class="button" th:href="@{/admin/events}">Cancel</a>
+            </div>
+        </form>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotion Form</title>
+    <link rel="icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+<main>
+    <section class="page-heading">
+        <h1 th:text="${promotionForm.id == null ? 'New Promotion' : 'Edit Promotion'}">Promotion</h1>
+        <p>Promotion dates and product labels are rendered from the database.</p>
+    </section>
+    <section class="section">
+        <form th:action="@{/admin/promotions}" th:object="${promotionForm}" method="post" class="admin-form">
+            <input type="hidden" th:field="*{id}">
+            <label>Title<input type="text" th:field="*{title}" required></label>
+            <label>Product name<input type="text" th:field="*{productName}" required></label>
+            <label>Description<textarea th:field="*{description}" rows="4" required></textarea></label>
+            <label>Highlight color<input type="text" th:field="*{highlightColor}" required></label>
+            <div class="form-row">
+                <label>Starts on<input type="date" th:field="*{startsOn}" required></label>
+                <label>Ends on<input type="date" th:field="*{endsOn}" required></label>
+            </div>
+            <label class="check-line"><input type="checkbox" th:field="*{active}"> Active</label>
+            <div class="actions">
+                <button type="submit" class="primary">Save promotion</button>
+                <a class="button" th:href="@{/admin/promotions}">Cancel</a>
+            </div>
+        </form>
+    </section>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>
