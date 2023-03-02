@@ -1,0 +1,17 @@
+﻿.git/
+.history/
+target/
+*.log
+.env
+.env.*
+!.env.example
+
+# Original static prototype files are preserved in Git but not needed in the Docker build.
+*.html
+css/
+fonts/
+icon/
+images/
+js/
+vid/
+Assignment Part1.docx
