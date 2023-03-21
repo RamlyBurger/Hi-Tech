@@ -58,4 +58,27 @@ class SecurityFlowTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Admin Dashboard")));
     }
+
+    @Test
+    void adminCanCreateProduct() throws Exception {
+        mockMvc.perform(post("/admin/products")
+                .with(user("admin").roles("ADMIN", "CUSTOMER"))
+                .with(csrf())
+                .param("slug", "mockmvc-admin-product")
+                .param("name", "MockMvc Admin Product")
+                .param("description", "Created through the admin product form.")
+                .param("price", "99.99")
+                .param("discountPercentage", "0")
+                .param("stock", "3")
+                .param("categoryId", "4")
+                .param("imagePath", "/images/logitech1.jpg")
+                .param("detailImagePath", "/images/logitech1b.jpg")
+                .param("active", "true"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/admin/products"));
+
+        mockMvc.perform(get("/products/item/mockmvc-admin-product"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("MockMvc Admin Product")));
+    }
 }
