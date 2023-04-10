@@ -3,57 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events</title>
-    <link rel="icon" th:href="@{/icon/logo.png}">
-    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <title>Event Calendar</title>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/icon/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/events.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/legacy-mvc.css}">
+    <script th:src="@{/js/simpleFunction.js}" defer></script>
 </head>
-<body>
+<body class="body1 legacy-page">
 <header th:replace="fragments :: header"></header>
-<main>
-    <section class="page-heading">
-        <h1>Events and Promotions</h1>
-        <p>Schedules and campaigns are now served from the database.</p>
-    </section>
 
-    <section class="section">
-        <h2>Schedule</h2>
-        <table class="data-table">
-            <thead>
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-                <th>Venue</th>
-                <th>Time</th>
-                <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="event, stat : ${events}">
-                <td th:text="${stat.count}">1</td>
-                <td th:text="${event.name}">Gaming Competition</td>
-                <td th:text="${event.venue}">Segamat</td>
-                <td th:text="${event.eventTime}">08:00</td>
-                <td th:text="${event.eventDate}">2022-10-01</td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
+<section id="titleBox">
+    <div class="titleBox2"><h1 class="title">Event</h1></div>
+    <p class="promotitle">Schedule</p>
+    <table class="schedule" id="schedule">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Venue</th>
+            <th>Time</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event, stat : ${events}" th:class="${stat.even ? 'active-row' : ''}">
+            <td th:text="${stat.count}">1</td>
+            <td th:text="${event.name}">Gaming Competition</td>
+            <td th:text="${event.venue}">Segamat</td>
+            <td th:text="${event.eventTime}">8.00am</td>
+            <td th:text="${event.eventDate}">1st Oct</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="promotitle" id="promo">Promotion</p>
+    <dl class="promo">
+        <th:block th:each="promotion : ${promotions}">
+            <dt th:text="${promotion.startsOn} + ' - ' + ${promotion.endsOn}">26th Sept - 31st Sept</dt>
+            <dd>
+                Promotion on
+                <span th:style="'color:' + ${promotion.highlightColor}" th:text="${promotion.productName}">Iphone 14</span>
+            </dd>
+            <hr>
+        </th:block>
+    </dl>
+</section>
 
-    <section class="section">
-        <h2>Promotions</h2>
-        <div class="promo-list">
-            <article th:each="promotion : ${promotions}" class="promo-card">
-                <span th:text="${promotion.startsOn} + ' to ' + ${promotion.endsOn}">Dates</span>
-                <h3 th:text="${promotion.title}">Promotion</h3>
-                <p>
-                    Promotion on
-                    <strong th:style="'color:' + ${promotion.highlightColor}" th:text="${promotion.productName}">Product</strong>
-                </p>
-                <p th:text="${promotion.description}">Description</p>
-            </article>
-        </div>
-    </section>
-</main>
 <footer th:replace="fragments :: footer"></footer>
 </body>
 </html>

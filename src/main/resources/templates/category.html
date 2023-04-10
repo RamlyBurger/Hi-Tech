@@ -2,36 +2,51 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${category.name}">Category</title>
-    <link rel="icon" th:href="@{/icon/logo.png}">
-    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/icon/logo.png}">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/productsOption.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/legacy-mvc.css}" rel="stylesheet">
+    <script th:src="@{/js/simpleFunction.js}" defer></script>
+    <title th:text="${category.name} + ' products'">Products</title>
 </head>
-<body>
+<body class="legacy-page legacy-category">
 <header th:replace="fragments :: header"></header>
-<main>
-    <section class="page-heading visual-heading">
-        <div>
-            <h1 th:text="${category.name}">Category</h1>
-            <p th:text="${category.description}">Description</p>
-        </div>
-        <img th:src="@{${category.imagePath}}" th:alt="${category.name}">
-    </section>
 
-    <section class="product-grid">
-        <article class="product-card" th:each="product : ${products}">
-            <a th:href="@{/products/item/{slug}(slug=${product.slug})}">
-                <img th:src="@{${product.imagePath}}" th:alt="${product.name}">
-            </a>
-            <div>
-                <h3 th:text="${product.name}">Product</h3>
-                <span th:if="${product.discountPercentage > 0}" class="discount" th:text="'-' + ${product.discountPercentage} + '%'">-10%</span>
-                <strong th:text="'RM ' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
-                <a class="button small" th:href="@{/products/item/{slug}(slug=${product.slug})}">View details</a>
-            </div>
-        </article>
-    </section>
-</main>
+<section class="legacy-category-heading">
+    <h1 th:text="${category.name} + ' products'">Desktop products</h1>
+    <p th:text="${category.description}">Category description</p>
+</section>
+
+<div class="container1">
+    <div class="card" th:each="product : ${products}">
+        <a th:href="@{/products/item/{slug}(slug=${product.slug})}">
+            <img th:src="@{${product.imagePath}}" th:alt="${product.name}">
+        </a>
+        <span th:if="${product.discountPercentage > 0}" class="discount"
+              th:text="'-' + ${product.discountPercentage} + '%'">-25%</span>
+        <div class="panel">
+            <a th:href="@{/products/item/{slug}(slug=${product.slug})}" class="icon-text">&#9829;</a>
+            <a th:href="@{/products/item/{slug}(slug=${product.slug})}" class="icon-text">&#8599;</a>
+            <a th:href="@{/products/item/{slug}(slug=${product.slug})}" class="icon-text">&#8981;</a>
+        </div>
+        <form th:action="@{/cart/items}" method="post">
+            <input type="hidden" name="productId" th:value="${product.id}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit">add to cart</button>
+        </form>
+        <div class="info">
+            <h3 th:text="${product.name}">Product</h3>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <strong class="price"
+                    th:text="'RM' + ${#numbers.formatDecimal(product.salePrice, 1, 'COMMA', 2, 'POINT')}">RM0</strong>
+        </div>
+    </div>
+</div>
+
 <footer th:replace="fragments :: footer"></footer>
 </body>
 </html>

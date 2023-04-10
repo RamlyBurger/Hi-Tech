@@ -1,42 +1,108 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
-    <link rel="icon" th:href="@{/icon/logo.png}">
-    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/icon/logo.png}">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/feedback.css}" rel="stylesheet">
+    <link th:href="@{/css/legacy-mvc.css}" rel="stylesheet">
+    <script th:src="@{/js/simpleFunction.js}" defer></script>
 </head>
-<body>
+<body class="legacy-page">
 <header th:replace="fragments :: header"></header>
-<main>
-    <section class="page-heading">
-        <h1>Customer Feedback</h1>
-        <p>Original review content retained as part of the storefront prototype.</p>
+
+<div class="feedbackContent">
+    <section id="feedback">
+        <div class="feedbackHeading">
+            <h1>Feedback</h1>
+            <p>Comment Sections</p>
+        </div>
+        <div class="commentsection">
+            <div class="commentbox">
+                <div class="topBox">
+                    <div class="avatar"><img th:src="@{/images/bird.jpg}" alt="Ramly Burger"></div>
+                    <div class="username">
+                        <strong>Ramly Burger</strong>
+                        <span>burger1234@yahoo.com</span>
+                    </div>
+                </div>
+                <div class="commentContent">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starhalf.png}" alt="">
+                    <img th:src="@{/icon/starempty.png}" alt="">
+                    <img th:src="@{/icon/starempty.png}" alt="">
+                </div>
+                <div class="commentTxt">
+                    <p>Very nice, have a lot of advanced electronic gadgets. It has a lot of categories such as desktop, laptop, smartphone, and accessories.</p>
+                </div>
+            </div>
+            <div class="commentbox">
+                <div class="topBox">
+                    <div class="avatar"><img th:src="@{/images/girl1.jpg}" alt="Susan"></div>
+                    <div class="username">
+                        <strong>Susan</strong>
+                        <span>susan1234@yahoo.com</span>
+                    </div>
+                </div>
+                <div class="commentContent">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starempty.png}" alt="">
+                </div>
+                <div class="commentTxt">
+                    <p>I bought a laptop here before. Very nice service, the staff are friendly and considerate.</p>
+                </div>
+            </div>
+            <div class="commentbox">
+                <div class="topBox">
+                    <div class="avatar"><img th:src="@{/images/Lee.jpg}" alt="Lee Chong Wei"></div>
+                    <div class="username">
+                        <strong>Lee Chong Wei</strong>
+                        <span>chongwei1234@yahoo.com</span>
+                    </div>
+                </div>
+                <div class="commentContent">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                </div>
+                <div class="commentTxt">
+                    <p>Hi-Tech is really cheap compared to mall prices and has many useful accessories.</p>
+                </div>
+            </div>
+            <div class="commentbox">
+                <div class="topBox">
+                    <div class="avatar"><img th:src="@{/images/cat.gif}" alt="Kin Hang"></div>
+                    <div class="username">
+                        <strong>Kin Hang</strong>
+                        <span>kinhang123@gmail.com</span>
+                    </div>
+                </div>
+                <div class="commentContent">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starfull.png}" alt="">
+                    <img th:src="@{/icon/starhalf.png}" alt="">
+                    <img th:src="@{/icon/starempty.png}" alt="">
+                    <img th:src="@{/icon/starempty.png}" alt="">
+                </div>
+                <div class="commentTxt">
+                    <p>Helpful staff. A lot of accessories to choose from, quality products, and fair prices.</p>
+                </div>
+            </div>
+        </div>
     </section>
-    <section class="review-grid">
-        <article class="review-card">
-            <img th:src="@{/images/bird.jpg}" alt="Ramly Burger">
-            <h2>Ramly Burger</h2>
-            <p>Very nice, have a lot of advanced electronic gadgets and product categories.</p>
-        </article>
-        <article class="review-card">
-            <img th:src="@{/images/girl1.jpg}" alt="Susan">
-            <h2>Susan</h2>
-            <p>I bought a laptop here before. The service was friendly and considerate.</p>
-        </article>
-        <article class="review-card">
-            <img th:src="@{/images/Lee.jpg}" alt="Lee Chong Wei">
-            <h2>Lee Chong Wei</h2>
-            <p>Hi-Tech is really cheap compared to mall prices and has many useful accessories.</p>
-        </article>
-        <article class="review-card">
-            <img th:src="@{/images/cat.gif}" alt="Kin Hang">
-            <h2>Kin Hang</h2>
-            <p>Helpful staff, many accessories to choose from, and quality products.</p>
-        </article>
-    </section>
-</main>
+</div>
+
 <footer th:replace="fragments :: footer"></footer>
 </body>
 </html>

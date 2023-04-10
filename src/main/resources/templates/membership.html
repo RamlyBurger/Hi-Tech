@@ -5,48 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Membership</title>
     <link rel="icon" th:href="@{/icon/logo.png}">
-    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/membership.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/legacy-mvc.css}" rel="stylesheet">
+    <script th:src="@{/js/simpleFunction.js}" defer></script>
 </head>
-<body>
+<body class="legacy-page">
 <header th:replace="fragments :: header"></header>
-<main>
-    <section class="page-heading">
-        <h1>Membership</h1>
-        <p>The more you take, the more you gain.</p>
-    </section>
-    <section class="plan-grid">
-        <article class="plan-card">
-            <h2>Starter Pack</h2>
-            <p>Free for new customers only.</p>
-            <ul>
-                <li>Limited promotions</li>
-                <li>One-month access</li>
-                <li>No member card</li>
-            </ul>
-            <a class="button" th:href="@{/checkout}">Subscribe now</a>
-        </article>
-        <article class="plan-card emphasized">
-            <h2>Elite Pack</h2>
-            <p>Free for customers who purchased up to RM5,000.</p>
-            <ul>
-                <li>Selected promotions</li>
-                <li>Gift redemption access</li>
-                <li>Member card included</li>
-            </ul>
-            <a class="button primary" th:href="@{/checkout}">Subscribe now</a>
-        </article>
-        <article class="plan-card">
-            <h2>Legend Pack</h2>
-            <p>For customers who purchased up to RM10,000.</p>
-            <ul>
-                <li>Unlimited promotions</li>
-                <li>One-year access</li>
-                <li>Master member card</li>
-            </ul>
-            <a class="button" th:href="@{/checkout}">Subscribe now</a>
-        </article>
-    </section>
-</main>
+
+<section class="membershipBox">
+    <h1 class="Title">Membership</h1>
+    <p class="Title">The more you take, the more you gain.</p>
+    <div class="boxes">
+        <div class="box">
+            <h2 class="box1">Starter Pack</h2>
+            <p>Free for new customers only</p>
+            <p>Limited promotions</p>
+            <p>One-month access</p>
+            <p>No member card</p>
+            <a th:href="@{/checkout}"><button class="box1"><span></span>Subscribe now</button></a>
+        </div>
+        <div class="box">
+            <h2 class="box2">Elite Pack</h2>
+            <p>Free for customers who purchased up to RM5,000</p>
+            <p>Selected promotions</p>
+            <p>Gift redemption access</p>
+            <p>Member card included</p>
+            <a th:href="@{/checkout}"><button class="box2"><span></span>Subscribe now</button></a>
+        </div>
+        <div class="box">
+            <h2 class="box3">Legend Pack</h2>
+            <p>For customers who purchased up to RM10,000</p>
+            <p>Unlimited promotions</p>
+            <p>One-year access</p>
+            <p>Master member card</p>
+            <a th:href="@{/checkout}"><button class="box3"><span></span>Subscribe now</button></a>
+        </div>
+    </div>
+</section>
+
 <footer th:replace="fragments :: footer"></footer>
 </body>
 </html>

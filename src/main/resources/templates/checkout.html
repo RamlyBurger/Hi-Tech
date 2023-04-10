@@ -2,64 +2,102 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
-    <link rel="icon" th:href="@{/icon/logo.png}">
-    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/icon/logo.png}">
+    <title>Payment</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/payment.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/legacy-mvc.css}">
+    <script th:src="@{/js/simpleFunction.js}" defer></script>
 </head>
-<body>
+<body class="legacy-page">
 <header th:replace="fragments :: header"></header>
-<main>
-    <section class="page-heading">
-        <h1>Checkout</h1>
-        <p>Payment is simulated for this assignment prototype.</p>
-    </section>
 
-    <p th:if="${checkoutError}" class="alert error" th:text="${checkoutError}">Checkout error</p>
+<p th:if="${checkoutError}" class="alert error" th:text="${checkoutError}">Checkout error</p>
 
-    <section class="checkout-grid">
-        <article class="auth-card">
-            <h2>Billing details</h2>
-            <form th:action="@{/checkout}" th:object="${checkoutForm}" method="post" class="stacked-form">
-                <label>
-                    Full name
-                    <input type="text" th:field="*{customerName}" required>
-                    <span class="field-error" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}">Error</span>
-                </label>
-                <label>
-                    Email
-                    <input type="email" th:field="*{email}" required>
-                    <span class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</span>
-                </label>
-                <label>
-                    Address
-                    <textarea th:field="*{address}" rows="4" required></textarea>
-                    <span class="field-error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Error</span>
-                </label>
-                <label>
-                    Payment method
-                    <select th:field="*{paymentMethod}">
-                        <option value="Simulated card">Simulated card</option>
-                        <option value="Simulated e-wallet">Simulated e-wallet</option>
-                        <option value="Simulated online banking">Simulated online banking</option>
-                    </select>
-                </label>
-                <button type="submit" class="primary">Complete order</button>
-            </form>
-        </article>
+<section class="paymentSec">
+    <div class="paymentContainer">
+        <form th:action="@{/checkout}" th:object="${checkoutForm}" method="post">
+            <div class="row">
+                <div class="col">
+                    <div class="title">billing address</div>
+                    <div class="inputBox">
+                        <span>full name:</span>
+                        <input type="text" th:field="*{customerName}" placeholder="john deo" required>
+                        <span class="field-error" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}">Error</span>
+                    </div>
+                    <div class="inputBox">
+                        <span>email:</span>
+                        <input type="email" th:field="*{email}" placeholder="example@example.com" required>
+                        <span class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</span>
+                    </div>
+                    <div class="inputBox">
+                        <span>address:</span>
+                        <input type="text" th:field="*{address}" placeholder="room - street - locality" required>
+                        <span class="field-error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Error</span>
+                    </div>
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>state:</span>
+                            <input type="text" value="Malaysia" readonly>
+                        </div>
+                        <div class="inputBox">
+                            <span>payment method:</span>
+                            <select th:field="*{paymentMethod}">
+                                <option value="Simulated card">Simulated card</option>
+                                <option value="Simulated e-wallet">Simulated e-wallet</option>
+                                <option value="Simulated online banking">Simulated online banking</option>
+                            </select>
+                        </div>
+                    </div>
 
-        <article class="auth-card">
-            <h2>Order summary</h2>
-            <div th:each="line : ${lines}" class="summary-item">
-                <span th:text="${line.product.name} + ' x ' + ${line.quantity}">Product</span>
-                <strong th:text="'RM ' + ${#numbers.formatDecimal(line.lineTotal, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
+                    <div class="col">
+                        <div class="title">payment</div>
+                        <div class="inputBox">
+                            <span>Cards accepted</span>
+                            <strong>VISA</strong>
+                            <strong>MASTERCARD</strong>
+                            <strong>DISCOVER</strong>
+                        </div>
+                        <div class="inputBox">
+                            <span>Name on card:</span>
+                            <input type="text" placeholder="Mr.john deo">
+                        </div>
+                        <div class="inputBox">
+                            <span>Credit card numbers:</span>
+                            <input type="text" placeholder="1111-2222-3333-4444">
+                        </div>
+                        <div class="flex">
+                            <div class="inputBox">
+                                <span>Exp year:</span>
+                                <input type="number" placeholder="2026">
+                            </div>
+                            <div class="inputBox">
+                                <span>CVV:</span>
+                                <input type="text" placeholder="123">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-summary">
+                        <div th:each="line : ${lines}">
+                            <span th:text="${line.product.name} + ' x ' + ${line.quantity}">Product</span>
+                            <strong th:text="'RM ' + ${#numbers.formatDecimal(line.lineTotal, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
+                        </div>
+                        <p>
+                            <strong th:text="'Total: RM ' + ${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')}">Total</strong>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="summary-row">
-                <strong th:text="'Total: RM ' + ${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')}">Total</strong>
-            </div>
-        </article>
-    </section>
-</main>
+            <input type="submit" value="proceed to submit" class="submit-btn">
+        </form>
+    </div>
+</section>
+
 <footer th:replace="fragments :: footer"></footer>
 </body>
 </html>

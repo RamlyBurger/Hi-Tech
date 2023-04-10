@@ -2,41 +2,71 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/icon/logo.png}">
     <title>FAQ</title>
-    <link rel="icon" th:href="@{/icon/logo.png}">
-    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/faq.css}" rel="stylesheet">
+    <link th:href="@{/css/legacy-mvc.css}" rel="stylesheet">
+    <script th:src="@{/js/simpleFunction.js}" defer></script>
 </head>
-<body>
+<body class="legacy-page">
 <header th:replace="fragments :: header"></header>
-<main>
-    <section class="page-heading">
-        <h1>Frequently Asked Questions</h1>
-        <p>Answers for membership, online purchase, app installation, promotions, and receipts.</p>
+
+<div class="aboutusBackgrd">
+    <section class="contents">
+        <h1 class="aboutusheading">FAQ</h1>
+        <div class="faqs">
+            <div class="ques">
+                <h3>How to get the premium account for Hi-Tech for free?</h3>
+                <img class="dropdownans" th:src="@{/icon/dropdown.svg}" alt="">
+            </div>
+            <div class="ans">
+                <p>To get the free Hi-Tech account, you will need to make a purchase up to RM5,000 in a single purchase to be able to obtain the free premium account.</p>
+            </div>
+        </div>
+        <div class="faqs">
+            <div class="ques">
+                <h3>How to install the app in phone?</h3>
+                <img class="dropdownans" th:src="@{/icon/dropdown.svg}" alt="">
+            </div>
+            <div class="ans">
+                <p>To install our app, first you must connect to the Wi-Fi, then you can search for Hi-Tech in your playstore or appstore.</p>
+            </div>
+        </div>
+        <div class="faqs">
+            <div class="ques">
+                <h3>I forgot to take picture of my receipt which is entitled to redeem freebie, what should I do?</h3>
+                <img class="dropdownans" th:src="@{/icon/dropdown.svg}" alt="">
+            </div>
+            <div class="ans">
+                <p>Kindly reach out to the nearest Hi-Tech branches to take another copy of your receipt.</p>
+            </div>
+        </div>
+        <div class="faqs">
+            <div class="ques">
+                <h3>How to apply for free gift during promotion?</h3>
+                <img class="dropdownans" th:src="@{/icon/dropdown.svg}" alt="">
+            </div>
+            <div class="ans">
+                <p>To apply for free gift during promotion, first you will need to purchase Elite pack in our flagship store. Then, you will receive a notification giving you the free gift.</p>
+            </div>
+        </div>
+        <div class="faqs">
+            <div class="ques">
+                <h3>How to make a purchase online?</h3>
+                <img class="dropdownans" th:src="@{/icon/dropdown.svg}" alt="">
+            </div>
+            <div class="ans">
+                <p>To make a purchase online, click Products on the navigation pane, view your desired product, then add it to cart to proceed to payment.</p>
+            </div>
+        </div>
     </section>
-    <section class="faq-list">
-        <article>
-            <h2>How do I get a free premium account?</h2>
-            <p>Make a single purchase up to RM5,000 to qualify for the free premium account.</p>
-        </article>
-        <article>
-            <h2>How do I install the app on my phone?</h2>
-            <p>Connect to Wi-Fi, then search for Hi-Tech in the Play Store or App Store.</p>
-        </article>
-        <article>
-            <h2>What if I forgot to photograph my receipt?</h2>
-            <p>Reach out to the nearest Hi-Tech branch and request another receipt copy.</p>
-        </article>
-        <article>
-            <h2>How do I apply for a free gift during a promotion?</h2>
-            <p>Purchase the Elite membership package and follow the promotion notification instructions.</p>
-        </article>
-        <article>
-            <h2>How do I make an online purchase?</h2>
-            <p>Browse products, add items to your cart, and proceed to checkout with simulated payment.</p>
-        </article>
-    </section>
-</main>
+</div>
+
 <footer th:replace="fragments :: footer"></footer>
 </body>
 </html>

@@ -24,4 +24,5 @@ Thumbs.db
 
 # Build and cache output
 .cache/
+output/
 .mvn/wrapper/maven-wrapper.jar.tmp

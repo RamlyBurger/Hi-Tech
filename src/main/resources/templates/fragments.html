@@ -2,57 +2,110 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 <header th:fragment="header">
-    <div class="topbar">
-        <a th:if="${currentUser == null}" th:href="@{/login}">Account</a>
-        <span th:if="${currentUser != null}">Signed in as <strong th:text="${currentUser}">customer</strong></span>
-        <a th:if="${currentUser != null}" th:href="@{/orders}">Orders</a>
-        <a th:if="${isAdmin}" th:href="@{/admin}">Admin</a>
-        <form th:if="${currentUser != null}" th:action="@{/logout}" method="post" class="inline-form">
-            <button type="submit">Logout</button>
+    <div class="navbar legacy-topbar">
+        <form th:if="${currentUser != null}" th:action="@{/logout}" method="post" class="legacy-logout">
+            <button type="submit">LOGOUT</button>
         </form>
+        <a th:if="${isAdmin}" th:href="@{/admin}">&nbspADMIN&nbsp&nbsp</a>
+        <a th:if="${currentUser != null}" th:href="@{/orders}">&nbspORDERS&nbsp&nbsp</a>
+        <a th:href="@{/login}" th:text="${currentUser == null ? 'ACCOUNT' : currentUser}">ACCOUNT</a>
+        <a th:href="@{/login}"><img th:src="@{/icon/login.svg}" class="navbar account-icon" alt="Account"></a>
     </div>
-    <nav class="site-nav">
-        <a th:href="@{/}" class="brand">
-            <img th:src="@{/icon/logo.png}" alt="Hi-Tech">
-            <span>Hi-Tech</span>
-        </a>
-        <div class="nav-links">
+    <div class="banner">
+        <div class="navbar2">
+            <a th:href="@{/}">
+                <img th:src="@{/icon/logo.png}" class="logo" id="logo" alt="Hi-Tech logo"
+                     onmouseover="logoHover()" onmouseout="logoUnhover()">
+            </a>
+            <a th:href="@{/}">
+                <img th:src="@{/icon/logo2.png}" alt="Hi-Tech" class="logo2" id="logo2"
+                     onmouseover="logo2Hover()" onmouseout="logo2Unhover()">
+            </a>
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <div>
+                    <li><a class="productLink" th:href="@{/products}">Products</a></li>
+                    <div class="navbar2dropdown-content">
+                        <a th:href="@{/products/desktop}">Desktop</a>
+                        <a th:href="@{/products/laptop}">Laptop</a>
+                        <a th:href="@{/products/smartphone}">Smartphone</a>
+                        <a th:href="@{/products/accessories}">Accessories</a>
+                    </div>
+                </div>
+                <div>
+                    <li><a th:href="@{/events}">Events</a></li>
+                    <div class="navbar2dropdown-content">
+                        <a th:href="@{/events#schedule}">Schedule</a>
+                        <a th:href="@{/events#promo}">Promotions</a>
+                    </div>
+                </div>
+                <li><a th:href="@{/membership}">Membership</a></li>
+                <li><a th:href="@{/checkout}">Payment</a></li>
+                <li>
+                    <a th:href="@{/cart}">
+                        Cart<span th:if="${cartCount != null and cartCount > 0}" th:text="' (' + ${cartCount} + ')'">(0)</span>
+                    </a>
+                </li>
+                <li><a th:href="@{/feedback}">feedback</a></li>
+                <li><a th:href="@{/faq}">FAQ</a></li>
+                <li><a th:href="@{/about}">About us</a></li>
+            </ul>
+            <form class="searchBar" th:action="@{/products}" method="get">
+                <input type="text" placeholder="Search" id="searchContent" name="q" th:value="${query}">
+                <button type="submit"><img th:src="@{/icon/magnifier.png}" alt="Search"></button>
+            </form>
+        </div>
+    </div>
+</header>
+
+<footer th:fragment="footer">
+    <div class="footer">
+        <div class="infoBar">
+            <h3>Navigation</h3>
             <a th:href="@{/}">Home</a>
-            <a th:href="@{/products}">Products</a>
-            <a th:each="category : ${navCategories}"
-               th:href="@{/products/{code}(code=${category.code})}"
-               th:text="${category.name}">Category</a>
-            <a th:href="@{/events}">Events</a>
             <a th:href="@{/membership}">Membership</a>
-            <a th:href="@{/cart}">Cart <span th:if="${cartCount != null and cartCount > 0}" th:text="'(' + ${cartCount} + ')'">(0)</span></a>
+            <a th:href="@{/checkout}">Payment</a>
+            <a th:href="@{/cart}">Cart</a>
+            <a th:href="@{/login}">Login</a>
+        </div>
+
+        <div class="infoBar">
+            <h3>Information</h3>
+            <a th:href="@{/products}">Products</a>
+            <a th:href="@{/events}">Events</a>
             <a th:href="@{/feedback}">Feedback</a>
             <a th:href="@{/faq}">FAQ</a>
             <a th:href="@{/about}">About us</a>
         </div>
-        <form th:action="@{/products}" method="get" class="search">
-            <input type="search" name="q" placeholder="Search products" th:value="${query}">
-            <button type="submit">Search</button>
-        </form>
-    </nav>
-</header>
 
-<footer th:fragment="footer" class="site-footer">
-    <div>
-        <h3>Hi-Tech Company</h3>
-        <p>Electronics, gaming hardware, smartphones, desktops, laptops, and accessories.</p>
+        <div class="infoBar">
+            <h3>Product</h3>
+            <a th:href="@{/products/desktop}">Desktop</a>
+            <a th:href="@{/products/laptop}">Laptop</a>
+            <a th:href="@{/products/smartphone}">Smartphones</a>
+            <a th:href="@{/products/accessories}">Accessories</a>
+        </div>
+
+        <div class="gmap_canvas">
+            <h3>Contact Us</h3>
+            <p>Tel: <a href="tel:+6012-3456789">+6012-3456789</a></p>
+            <p>email: <a href="mailto:ramly@tarc.edu.my">ramly@tarc.edu.my</a></p><br>
+            <p>Jalan Segamat / Labis,<br>85000, Segamat, <br>Johor</p>
+            <a href="https://facebook.com/" target="_blank"><img th:src="@{/icon/fb.png}" alt="Facebook"></a>
+            <a href="https://instagram.com/" target="_blank"><img th:src="@{/icon/insta.png}" alt="Instagram"></a>
+            <a href="https://youtube.com/" target="_blank"><img th:src="@{/icon/yt.png}" alt="YouTube"></a>
+            <a href="https://twitter.com/" target="_blank"><img th:src="@{/icon/twitter.png}" alt="Twitter"></a>
+            <a href="https://reddit.com/" target="_blank"><img th:src="@{/icon/reddit.png}" alt="Reddit"></a>
+        </div>
+
+        <div class="mapouter">
+            <iframe id="gmap_canvas"
+                    src="https://maps.google.com/maps?q=tarc%20jo&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        </div>
     </div>
-    <div>
-        <h3>Contact</h3>
-        <p>Tel: <a href="tel:+6012-3456789">+6012-3456789</a></p>
-        <p>Email: <a href="mailto:ramly@tarc.edu.my">ramly@tarc.edu.my</a></p>
-        <p>Jalan Segamat / Labis, 85000 Segamat, Johor</p>
-    </div>
-    <div>
-        <h3>Shop</h3>
-        <a th:href="@{/products/desktop}">Desktop</a>
-        <a th:href="@{/products/laptop}">Laptop</a>
-        <a th:href="@{/products/smartphone}">Smartphone</a>
-        <a th:href="@{/products/accessories}">Accessories</a>
+    <div class="copyright">
+        <p><em>@ 2022 HI Tech Company Sdn.Bhd.All Right Reserved</em></p>
     </div>
 </footer>
 </body>

@@ -24,7 +24,7 @@ public class CatalogService {
     }
 
     public List<Category> listCategories() {
-        return categoryRepository.findAll(Sort.by("name"));
+        return categoryRepository.findAll(Sort.by("id"));
     }
 
     public List<Product> listProducts(String categoryCode, String query) {

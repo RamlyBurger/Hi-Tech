@@ -1,72 +1,131 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hi-Tech Company</title>
-    <link rel="icon" th:href="@{/icon/logo.png}">
-    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/icon/logo.png}">
+    <title>Hi Tech Company</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link th:href="@{/css/header.css}" rel="stylesheet">
+    <link th:href="@{/css/home.css}" rel="stylesheet">
+    <link th:href="@{/css/slideshow.css}" rel="stylesheet">
+    <link th:href="@{/css/hello.css}" rel="stylesheet">
+    <link th:href="@{/css/productsOption.css}" rel="stylesheet">
+    <link th:href="@{/css/legacy-mvc.css}" rel="stylesheet">
+    <script th:src="@{/js/hello.js}" defer></script>
+    <script th:src="@{/js/slideshow.js}" defer></script>
+    <script th:src="@{/js/simpleFunction.js}" defer></script>
 </head>
-<body>
+<body class="legacy-page legacy-home">
 <header th:replace="fragments :: header"></header>
 
-<main>
-    <section class="hero">
-        <div class="hero-copy">
-            <p class="eyebrow">Hi-Tech Commerce</p>
-            <h1>Everything ready for your next setup.</h1>
-            <p>Browse desktops, laptops, smartphones, and accessories from the original Hi-Tech assignment catalog.</p>
-            <div class="actions">
-                <a class="button primary" th:href="@{/products}">Shop products</a>
-                <a class="button" th:href="@{/events}">View events</a>
-            </div>
+<section>
+    <img th:src="@{/images/homeMap.png}" class="homeMap" usemap="#map1" width="992" height="791" alt="Hi-Tech map">
+    <map name="map1">
+        <area shape="rect" coords="585,215,720,300" th:href="@{/faq}" alt="FAQ">
+        <area shape="rect" coords="555,315,775,400" th:href="@{/about}" alt="About us">
+    </map>
+    <div class="heading">
+        <h1>We provide everything<br>ready for you</h1>
+        <a th:href="@{/events}"><button><span></span>What's New?</button></a>
+    </div>
+</section>
+
+<div class="homeBackground">
+    <div class="word">
+        <span>H</span>
+        <span>I</span>
+        <span>-</span>
+        <span>T</span>
+        <span>E</span>
+        <span>C</span>
+        <span>H</span>
+        <h3 class="fixed"><em>Click the letters!</em></h3>
+    </div>
+
+    <section aria-label="Computer gadget">
+        <div class="carousel" data-carousel>
+            <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
+            <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
+            <ul data-slides>
+                <li class="slide" data-active>
+                    <img th:src="@{/images/home1.jpg}" alt="Hi-Tech slide 1">
+                </li>
+                <li class="slide">
+                    <img th:src="@{/images/home2.jpg}" alt="Hi-Tech slide 2">
+                </li>
+                <li class="slide">
+                    <img th:src="@{/images/home3.jpg}" alt="Hi-Tech slide 3">
+                </li>
+            </ul>
         </div>
-        <img th:src="@{/images/homeMap.png}" alt="Hi-Tech service map">
     </section>
 
-    <section class="section">
-        <div class="section-heading">
-            <h2>Featured products</h2>
-            <a th:href="@{/products}">All products</a>
-        </div>
-        <div class="product-grid">
-            <article class="product-card" th:each="product : ${featuredProducts}">
+    <section class="home-featured">
+        <h2 class="legacy-section-title">Featured products</h2>
+        <div class="container1">
+            <div class="card" th:each="product : ${featuredProducts}">
                 <a th:href="@{/products/item/{slug}(slug=${product.slug})}">
                     <img th:src="@{${product.imagePath}}" th:alt="${product.name}">
                 </a>
-                <div>
-                    <p th:text="${product.category.name}">Category</p>
-                    <h3 th:text="${product.name}">Product</h3>
-                    <strong th:text="'RM ' + ${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
+                <span th:if="${product.discountPercentage > 0}" class="discount"
+                      th:text="'-' + ${product.discountPercentage} + '%'">-25%</span>
+                <div class="panel">
+                    <a th:href="@{/products/item/{slug}(slug=${product.slug})}" class="icon-text">&#9829;</a>
+                    <a th:href="@{/products/item/{slug}(slug=${product.slug})}" class="icon-text">&#8599;</a>
+                    <a th:href="@{/products/item/{slug}(slug=${product.slug})}" class="icon-text">&#8981;</a>
                 </div>
-            </article>
-        </div>
-    </section>
-
-    <section class="section split">
-        <div>
-            <h2>Why choose us?</h2>
-            <ul class="feature-list">
-                <li>Lightning-fast delivery for selected products.</li>
-                <li>Membership plans with promotion privileges.</li>
-                <li>After-sales support and repair service.</li>
-            </ul>
-        </div>
-        <div class="promo-panel">
-            <h2>Current promotions</h2>
-            <div th:each="promotion : ${promotions}" class="promo-row">
-                <span th:text="${promotion.productName}">Product</span>
-                <strong th:text="${promotion.title}">Promotion</strong>
+                <form th:action="@{/cart/items}" method="post">
+                    <input type="hidden" name="productId" th:value="${product.id}">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit">add to cart</button>
+                </form>
+                <div class="info">
+                    <h3 th:text="${product.name}">Product</h3>
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <strong class="price"
+                            th:text="'RM' + ${#numbers.formatDecimal(product.salePrice, 1, 'COMMA', 2, 'POINT')}">RM0</strong>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="media-strip">
-        <video controls loop muted>
+    <div class="divhr3"></div>
+    <div class="whyus">
+        <p>Why chooses us?</p>
+        <div class="whyus2">
+            <div>
+                <a th:href="@{/faq}"><img id="lightIco" th:src="@{/icon/Lightning.png}" alt="Delivery"
+                                           onmouseover="whyushover()" onmouseout="whyusunhover()"></a>
+                <p>Lightning-fast delivery</p>
+            </div>
+            <div>
+                <a th:href="@{/membership}"><img id="awardIco" th:src="@{/icon/Membership.png}" alt="Membership"
+                                                 onmouseover="whyushover2()" onmouseout="whyusunhover2()"></a>
+                <p>Membership</p>
+            </div>
+            <div>
+                <a th:href="@{/feedback}"><img id="serviceIco" th:src="@{/icon/Services.png}" alt="Service"
+                                               onmouseover="whyushover3()" onmouseout="whyusunhover3()"></a>
+                <p>After-sales Service</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="video1">
+        <video controls loop autoplay muted>
             <source th:src="@{/vid/homeAds.mp4}" type="video/mp4">
+            <source th:src="@{/vid/homeAds.mp3}" type="audio/mpeg">
         </video>
-    </section>
-</main>
+    </div>
+
+    <div class="googleApp">
+        <a href="https://www.playstore.com/" target="_blank"><img th:src="@{/icon/playstore.png}" alt="Play Store"></a>
+        <a href="https://www.apple.com/app-store/" target="_blank"><img th:src="@{/icon/appstore.png}" alt="App Store"></a>
+    </div>
+</div>
 
 <footer th:replace="fragments :: footer"></footer>
 </body>

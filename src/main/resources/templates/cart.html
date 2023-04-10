@@ -1,70 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Cart</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
-    <link rel="icon" th:href="@{/icon/logo.png}">
-    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/carts.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/legacy-mvc.css}">
+    <script th:src="@{/js/simpleFunction.js}" defer></script>
 </head>
-<body>
+<body class="legacy-page">
 <header th:replace="fragments :: header"></header>
-<main>
-    <section class="page-heading">
-        <h1>Cart</h1>
-        <p>Review quantities before simulated checkout.</p>
-    </section>
 
-    <p th:if="${cartMessage}" class="alert success" th:text="${cartMessage}">Product added</p>
-    <p th:if="${cartError}" class="alert error" th:text="${cartError}">Error</p>
+<p th:if="${cartMessage}" class="alert success" th:text="${cartMessage}">Product added</p>
+<p th:if="${cartError}" class="alert error" th:text="${cartError}">Error</p>
 
-    <section th:if="${#lists.isEmpty(lines)}" class="section">
-        <h2>Your cart is empty</h2>
+<div class="bground">
+    <div th:if="${#lists.isEmpty(lines)}" class="cart-empty">
+        <h1>Your cart is empty</h1>
         <p>Browse the product catalog to add desktops, laptops, smartphones, or accessories.</p>
-        <a class="button primary" th:href="@{/products}">Shop products</a>
-    </section>
+        <a th:href="@{/products}">Shop products</a>
+    </div>
 
-    <section th:unless="${#lists.isEmpty(lines)}" class="section">
-        <table class="data-table">
-            <thead>
-            <tr>
-                <th>Product</th>
-                <th>Unit price</th>
-                <th>Quantity</th>
-                <th>Line total</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="line : ${lines}">
-                <td>
-                    <div class="cart-product">
+    <div th:unless="${#lists.isEmpty(lines)}" class="container">
+        <h1>Shopping Cart</h1>
+        <div class="cart">
+            <div class="products">
+                <div th:each="line : ${lines}">
+                    <h1 th:text="${line.product.name}">Product</h1>
+                    <div class="product">
                         <img th:src="@{${line.product.imagePath}}" th:alt="${line.product.name}">
-                        <span th:text="${line.product.name}">Product</span>
+                        <div class="product-info">
+                            <h3 class="product-name" th:text="${line.product.category.name}">Category</h3>
+                            <h4 class="product-price"
+                                th:text="'RM' + ${#numbers.formatDecimal(line.product.salePrice, 1, 'COMMA', 2, 'POINT')}">RM0</h4>
+                            <h4 class="product-offer"
+                                th:text="${line.product.discountPercentage > 0 ? 'discount ' + line.product.discountPercentage + '%' : 'discount 0%'}">discount 0%</h4>
+                            <p class="product-quantity">
+                                Qnt:
+                                <form class="cart-update"
+                                      th:action="@{/cart/items/{id}/update(id=${line.product.id})}" method="post">
+                                    <input type="number" name="quantity" min="0" th:max="${line.product.stock}"
+                                           th:value="${line.quantity}">
+                                    <button type="submit">Update</button>
+                                </form>
+                            </p>
+                            <form class="cart-remove"
+                                  th:action="@{/cart/items/{id}/remove(id=${line.product.id})}" method="post">
+                                <button class="product-remove" type="submit">
+                                    <span class="remove">Remove</span>
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </td>
-                <td th:text="'RM ' + ${#numbers.formatDecimal(line.product.salePrice, 1, 'COMMA', 2, 'POINT')}">RM 0.00</td>
-                <td>
-                    <form th:action="@{/cart/items/{id}/update(id=${line.product.id})}" method="post" class="quantity-form">
-                        <input type="number" name="quantity" min="0" th:max="${line.product.stock}" th:value="${line.quantity}">
-                        <button type="submit">Update</button>
-                    </form>
-                </td>
-                <td th:text="'RM ' + ${#numbers.formatDecimal(line.lineTotal, 1, 'COMMA', 2, 'POINT')}">RM 0.00</td>
-                <td>
-                    <form th:action="@{/cart/items/{id}/remove(id=${line.product.id})}" method="post">
-                        <button type="submit">Remove</button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="summary-row">
-            <strong th:text="'Total: RM ' + ${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')}">Total</strong>
-            <a class="button primary" th:href="@{/checkout}">Proceed to checkout</a>
+                </div>
+            </div>
+            <div class="cart-total">
+                <p>
+                    <span>Total Price</span>
+                    <span th:text="'RM ' + ${#numbers.formatDecimal(total, 1, 'COMMA', 2, 'POINT')}">RM 0</span>
+                </p>
+                <p>
+                    <span>Number of Items</span>
+                    <span th:text="${cartCount}">0</span>
+                </p>
+                <p>
+                    <span>You Save</span>
+                    <span>RM 0</span>
+                </p>
+                <a th:href="@{/checkout}">Proceed to Checkout</a>
+            </div>
         </div>
-    </section>
-</main>
+    </div>
+</div>
+
 <footer th:replace="fragments :: footer"></footer>
 </body>
 </html>
