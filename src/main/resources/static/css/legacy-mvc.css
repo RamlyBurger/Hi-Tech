@@ -47,15 +47,21 @@ body.legacy-page a {
 .navbar2 {
     flex-wrap: wrap;
     gap: 4px 14px;
+    justify-content: center;
     min-height: 150px;
 }
 
 .navbar2 ul {
     flex: 1 1 680px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 .navbar2 .searchBar {
     flex: 0 1 360px;
+    height: auto;
+    min-height: 50px;
 }
 
 .navbar2 .dropdown-content {
@@ -440,6 +446,36 @@ button.primary,
     padding: 10px 16px;
 }
 
+@media screen and (max-width: 1200px) and (min-width: 981px) {
+    .navbar2 {
+        align-items: center;
+        flex-direction: row;
+        min-height: 190px;
+        padding: 0 20px 12px;
+    }
+
+    .navbar2 ul {
+        flex: 1 1 600px;
+        line-height: 1.2;
+    }
+
+    .navbar2 ul li,
+    .navbar2 ul .dropdown {
+        margin: 8px 12px;
+    }
+
+    .navbar2 .searchBar {
+        flex: 0 0 360px;
+        margin: 8px auto;
+        width: 360px;
+    }
+
+    .searchBar input[type="text"] {
+        width: calc(100% - 62px);
+        padding-right: 0;
+    }
+}
+
 @media screen and (max-width: 980px) {
     .navbar2 {
         min-height: auto;
@@ -459,7 +495,8 @@ button.primary,
     }
 
     .navbar2 ul {
-        flex: 1 1 100%;
+        flex: 0 1 auto;
+        width: min(100%, 760px);
     }
 
     .navbar2 ul li {
@@ -467,7 +504,8 @@ button.primary,
     }
 
     .navbar2 .searchBar {
-        flex: 0 1 88%;
+        flex: 0 0 auto;
+        width: min(88%, 360px);
     }
 
     .legacy-home > section:first-of-type {
