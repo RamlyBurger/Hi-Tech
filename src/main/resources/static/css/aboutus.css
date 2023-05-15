@@ -15,10 +15,12 @@
     width: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 .backgroundaboutus > *{
     justify-content:  center;
+    box-sizing: border-box;
     width: 100%;
     display: block;
     align-items: center;
@@ -27,7 +29,9 @@
 }
 
 .backgroundaboutus img {
+    box-sizing: border-box;
     width: 100%;
+    max-width: 100%;
     margin: 100px 0px;
     padding: 0px 125px;
     transition: 0.5s;
@@ -38,6 +42,8 @@
 }
 
 .image1 {
+    box-sizing: border-box;
+    width: 100%;
     display: block;
     padding: auto;
     margin: 50px 0px;
@@ -51,6 +57,8 @@
 
 .image1 p {
     background-color: white;
+    box-sizing: border-box;
+    width: 100%;
     padding: 100px 100px;
     font-size: 2rem;
     font-family: Quicksand;
@@ -58,6 +66,8 @@
 }
 
 .image2 {
+    box-sizing: border-box;
+    width: 100%;
     display: block;
     padding: auto;
     margin: 50px 0px;
@@ -70,7 +80,57 @@
 }
 
 .image3 {
+    box-sizing: border-box;
+    width: auto;
     display: block;
     padding: auto;
     margin: 50px 100px;
+}
+
+.image3 img {
+    display: block;
+}
+
+@media screen and (max-width: 980px) {
+    .backgroundaboutus img,
+    .image1,
+    .image2 {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .image1:hover,
+    .backgroundaboutus img:hover {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .image1 p {
+        padding: 60px 48px;
+        font-size: 1.45rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .title {
+        font-size: 2.6rem;
+    }
+
+    .backgroundaboutus img,
+    .image1,
+    .image2 {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .image1 p {
+        padding: 36px 24px;
+        font-size: 1.05rem;
+        text-align: left;
+    }
+
+    .image3 {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
