@@ -81,3 +81,53 @@ Util.is = function(elem, selector) {
 		}
 	}
 }());
+
+(function() {
+  function setFaqState(faq, isOpen) {
+    var question = faq.querySelector('.ques');
+    var answer = faq.querySelector('.ans');
+    if (!question || !answer) return;
+
+    faq.classList.toggle('is-open', isOpen);
+    question.setAttribute('aria-expanded', String(isOpen));
+    answer.setAttribute('aria-hidden', String(!isOpen));
+    answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : '0px';
+  }
+
+  function toggleFaq(faq) {
+    setFaqState(faq, !faq.classList.contains('is-open'));
+  }
+
+  function initFaqs() {
+    var faqs = document.querySelectorAll('.faqs');
+    if (!faqs.length) return;
+
+    faqs.forEach(function(faq) {
+      var question = faq.querySelector('.ques');
+      if (!question) return;
+
+      setFaqState(faq, faq.classList.contains('is-open'));
+      question.addEventListener('click', function() {
+        toggleFaq(faq);
+      });
+      question.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          toggleFaq(faq);
+        }
+      });
+    });
+
+    window.addEventListener('resize', function() {
+      faqs.forEach(function(faq) {
+        if (faq.classList.contains('is-open')) setFaqState(faq, true);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaqs);
+  } else {
+    initFaqs();
+  }
+}());

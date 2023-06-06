@@ -26,9 +26,11 @@
 
 .dropdownans {
     max-width: 30px;
+    transition: transform 0.35s ease;
 }
 
 .faqs {
+    width: min(100%, 700px);
     max-width: 700px;
     margin-top: 2rem;
     padding-bottom: 1rem;
@@ -36,17 +38,39 @@
     cursor: pointer;
 }
 
+.faqs.is-open .dropdownans {
+    transform: rotate(180deg);
+}
+
 .ques {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 24px;
+    outline: none;
+}
+
+.ques:focus-visible {
+    outline: 2px solid #1bdbe2;
+    outline-offset: 8px;
 }
 
 .ques h3 {
     font-size: 1.5rem;
 }
 
-.answer p {
+.ans {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.25s ease;
+}
+
+.faqs.is-open .ans {
+    opacity: 1;
+}
+
+.ans p {
     padding-top: 1rem;
     line-height: 1.6;
     font-size: 1.4rem;
