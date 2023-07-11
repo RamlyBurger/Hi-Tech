@@ -72,6 +72,12 @@
   padding-bottom: 50px;
 }
 
+.box > h2.box1,
+.box > h2.box2,
+.box > h2.box3 {
+  margin-bottom: 34px;
+}
+
 .box p {
   padding: 10px;
   padding-left: 80px;
