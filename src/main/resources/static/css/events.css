@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .body1{
   background-attachment: fixed;
 }
@@ -72,8 +76,10 @@
 p.promotitle {
   font-size: 5em;
   margin: 25px;
+  scroll-margin-top: 32px;
 }
 
-p.promotitle:hover {
+p.promotitle:hover,
+p.promotitle:target {
   color: aqua;
 }
