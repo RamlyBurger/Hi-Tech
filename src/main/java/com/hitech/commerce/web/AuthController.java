@@ -43,6 +43,7 @@ public class AuthController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registrationForm",
                     bindingResult);
             redirectAttributes.addFlashAttribute("registrationForm", registrationForm);
+            redirectAttributes.addFlashAttribute("authMode", "register");
             return "redirect:/login";
         }
         accountService.registerCustomer(registrationForm);

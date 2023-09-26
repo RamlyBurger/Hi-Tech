@@ -21,45 +21,52 @@
 
 <div class="loginBackgrn">
     <div class="loginContent">
-        <div class="left">
-            <form th:action="@{/login}" method="post">
-                <h1 class="title">Sign in</h1>
-                <input class="inputBox" type="text" name="username" placeholder="Username" autocomplete="username" required>
-                <input class="inputBox" type="password" name="password" placeholder="Password" autocomplete="current-password" required>
-                <input type="submit" value="Login" class="btn">
-                <p class="hint">Demo customer: customer / password</p>
-                <p class="hint">Demo admin: admin / password</p>
-                <p class="otherOpt">or sign in with</p>
-                <div class="Appicons">
-                    <a href="https://facebook.com/" target="_blank"><img th:src="@{/icon/fb.png}" alt="Facebook"></a>
-                    <a href="https://instagram.com/" target="_blank"><img th:src="@{/icon/insta.png}" alt="Instagram"></a>
-                    <a href="https://youtube.com/" target="_blank"><img th:src="@{/icon/yt.png}" alt="YouTube"></a>
-                    <a href="https://twitter.com/" target="_blank"><img th:src="@{/icon/twitter.png}" alt="Twitter"></a>
-                    <a href="https://reddit.com/" target="_blank"><img th:src="@{/icon/reddit.png}" alt="Reddit"></a>
+        <input class="auth-toggle" type="checkbox" id="authToggle" th:checked="${authMode == 'register'}">
+        <div class="auth-stage">
+            <div class="auth-card">
+                <div class="auth-face auth-face-front">
+                    <form th:action="@{/login}" method="post">
+                        <h1 class="title">Sign in</h1>
+                        <input class="inputBox" type="text" name="username" placeholder="Username" autocomplete="username" required>
+                        <input class="inputBox" type="password" name="password" placeholder="Password" autocomplete="current-password" required>
+                        <input type="submit" value="Login" class="btn">
+                        <p class="hint">Demo customer: customer / password</p>
+                        <p class="hint">Demo admin: admin / password</p>
+                        <label class="auth-switch-text" for="authToggle">New to Hi-Tech? <span>Sign up</span></label>
+                        <p class="otherOpt">or sign in with</p>
+                        <div class="Appicons">
+                            <a href="https://facebook.com/" target="_blank"><img th:src="@{/icon/fb.png}" alt="Facebook"></a>
+                            <a href="https://instagram.com/" target="_blank"><img th:src="@{/icon/insta.png}" alt="Instagram"></a>
+                            <a href="https://youtube.com/" target="_blank"><img th:src="@{/icon/yt.png}" alt="YouTube"></a>
+                            <a href="https://twitter.com/" target="_blank"><img th:src="@{/icon/twitter.png}" alt="Twitter"></a>
+                            <a href="https://reddit.com/" target="_blank"><img th:src="@{/icon/reddit.png}" alt="Reddit"></a>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-        <div class="right">
-            <form th:action="@{/register}" th:object="${registrationForm}" method="post">
-                <h1 class="title">Sign up</h1>
-                <input class="inputBox" type="text" th:field="*{username}" placeholder="Username" autocomplete="username" required>
-                <span class="field-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error</span>
-                <input class="inputBox" type="text" th:field="*{fullName}" placeholder="Full name" autocomplete="name" required>
-                <span class="field-error" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Error</span>
-                <input class="inputBox" type="email" th:field="*{email}" placeholder="Email" autocomplete="email" required>
-                <span class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</span>
-                <input class="inputBox" type="password" th:field="*{password}" placeholder="Password" autocomplete="new-password" required>
-                <span class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error</span>
-                <input type="submit" value="Sign up" class="btn">
-                <p class="otherOpt">or sign up with</p>
-                <div class="Appicons">
-                    <a href="https://facebook.com/" target="_blank"><img th:src="@{/icon/fb.png}" alt="Facebook"></a>
-                    <a href="https://instagram.com/" target="_blank"><img th:src="@{/icon/insta.png}" alt="Instagram"></a>
-                    <a href="https://youtube.com/" target="_blank"><img th:src="@{/icon/yt.png}" alt="YouTube"></a>
-                    <a href="https://twitter.com/" target="_blank"><img th:src="@{/icon/twitter.png}" alt="Twitter"></a>
-                    <a href="https://reddit.com/" target="_blank"><img th:src="@{/icon/reddit.png}" alt="Reddit"></a>
+                <div class="auth-face auth-face-back">
+                    <form th:action="@{/register}" th:object="${registrationForm}" method="post">
+                        <h1 class="title">Sign up</h1>
+                        <input class="inputBox" type="text" th:field="*{username}" placeholder="Username" autocomplete="username" required>
+                        <span class="field-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error</span>
+                        <input class="inputBox" type="text" th:field="*{fullName}" placeholder="Full name" autocomplete="name" required>
+                        <span class="field-error" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Error</span>
+                        <input class="inputBox" type="email" th:field="*{email}" placeholder="Email" autocomplete="email" required>
+                        <span class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</span>
+                        <input class="inputBox" type="password" th:field="*{password}" placeholder="Password" autocomplete="new-password" required>
+                        <span class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error</span>
+                        <input type="submit" value="Sign up" class="btn">
+                        <label class="auth-switch-text" for="authToggle">Already have an account? <span>Sign in</span></label>
+                        <p class="otherOpt">or sign up with</p>
+                        <div class="Appicons">
+                            <a href="https://facebook.com/" target="_blank"><img th:src="@{/icon/fb.png}" alt="Facebook"></a>
+                            <a href="https://instagram.com/" target="_blank"><img th:src="@{/icon/insta.png}" alt="Instagram"></a>
+                            <a href="https://youtube.com/" target="_blank"><img th:src="@{/icon/yt.png}" alt="YouTube"></a>
+                            <a href="https://twitter.com/" target="_blank"><img th:src="@{/icon/twitter.png}" alt="Twitter"></a>
+                            <a href="https://reddit.com/" target="_blank"><img th:src="@{/icon/reddit.png}" alt="Reddit"></a>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
