@@ -20,17 +20,22 @@
 }
 
 .auth-stage {
-  min-height: 620px;
-  max-width: 460px;
-  width: min(100%, 460px);
+  height: 500px;
+  max-width: 420px;
+  transition: height 0.35s ease;
+  width: min(100%, 420px);
 }
 
 .auth-card {
-  min-height: 620px;
+  height: 100%;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.85s ease;
   width: 100%;
+}
+
+.auth-toggle:checked ~ .auth-stage {
+  height: 568px;
 }
 
 .auth-toggle:checked ~ .auth-stage .auth-card {
@@ -46,7 +51,7 @@
   display: flex;
   inset: 0;
   justify-content: center;
-  padding: 34px 32px;
+  padding: 26px 28px;
   position: absolute;
   width: 100%;
 }
@@ -71,15 +76,15 @@
 .loginContent div form h1.title {
   font-family: Monstserrat-Bold;
   font-size: 2.5rem;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .loginContent .auth-card .inputBox {
-  max-width: 380px;
+  max-width: 310px;
   width: 100%;
   background-color: #f0f0f0;
-  margin: 10px 0;
-  height: 55px;
+  margin: 8px 0;
+  height: 52px;
   border-radius: 55px;
   display: grid;
   grid-template-columns: 15% 85%;
@@ -100,7 +105,7 @@
 .otherOpt {
   font-family: Monstserrat-Light;
   font-size: 1rem;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
 }
 
 .auth-switch-text {
@@ -109,7 +114,7 @@
   display: block;
   font-family: Monstserrat-SemiBold;
   font-size: 0.98rem;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .auth-switch-text span {
@@ -126,12 +131,12 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
 .Appicons a img {
-  height: 46px;
-  width: 46px;
+  height: 42px;
+  width: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,7 +159,7 @@
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin: 10px 0;
+  margin: 8px 0;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -168,13 +173,18 @@
     padding: 90px 16px;
   }
 
-  .auth-stage,
-  .auth-card {
-    min-height: 650px;
+  .auth-stage {
+    height: 525px;
+    max-width: 390px;
+    width: min(100%, 390px);
+  }
+
+  .auth-toggle:checked ~ .auth-stage {
+    height: 590px;
   }
 
   .auth-face {
-    padding: 30px 22px;
+    padding: 26px 20px;
   }
 
   .loginContent div form h1.title {
