@@ -8,6 +8,9 @@
         </form>
         <a th:if="${isAdmin}" th:href="@{/admin}">&nbspADMIN&nbsp&nbsp</a>
         <a th:if="${currentUser != null}" th:href="@{/orders}">&nbspORDERS&nbsp&nbsp</a>
+        <a class="topbar-cart" th:href="@{/cart}">
+            CART<span th:if="${cartCount != null and cartCount > 0}" th:text="' (' + ${cartCount} + ')'">(0)</span>
+        </a>
         <a th:href="@{/login}" th:text="${currentUser == null ? 'ACCOUNT' : currentUser}">ACCOUNT</a>
         <a th:href="@{/login}"><img th:src="@{/icon/login.svg}" class="navbar account-icon" alt="Account"></a>
     </div>
@@ -23,32 +26,30 @@
             </a>
             <ul>
                 <li><a th:href="@{/}">Home</a></li>
-                <div>
-                    <li><a class="productLink" th:href="@{/products}">Products</a></li>
+                <li class="nav-dropdown">
+                    <a class="productLink" th:href="@{/products}">Products</a>
                     <div class="navbar2dropdown-content">
                         <a th:href="@{/products/desktop}">Desktop</a>
                         <a th:href="@{/products/laptop}">Laptop</a>
                         <a th:href="@{/products/smartphone}">Smartphone</a>
                         <a th:href="@{/products/accessories}">Accessories</a>
                     </div>
-                </div>
-                <div>
-                    <li><a th:href="@{/events}">Events</a></li>
+                </li>
+                <li class="nav-dropdown">
+                    <a th:href="@{/events}">Events</a>
                     <div class="navbar2dropdown-content">
                         <a th:href="@{/events#schedule}">Schedule</a>
                         <a th:href="@{/events#promo}">Promotions</a>
+                        <a th:href="@{/membership}">Membership</a>
                     </div>
-                </div>
-                <li><a th:href="@{/membership}">Membership</a></li>
-                <li><a th:href="@{/checkout}">Payment</a></li>
-                <li>
-                    <a th:href="@{/cart}">
-                        Cart<span th:if="${cartCount != null and cartCount > 0}" th:text="' (' + ${cartCount} + ')'">(0)</span>
-                    </a>
                 </li>
-                <li><a th:href="@{/feedback}">feedback</a></li>
-                <li><a th:href="@{/faq}">FAQ</a></li>
-                <li><a th:href="@{/about}">About us</a></li>
+                <li class="nav-dropdown">
+                    <a th:href="@{/about}">About us</a>
+                    <div class="navbar2dropdown-content">
+                        <a th:href="@{/feedback}">Feedback</a>
+                        <a th:href="@{/faq}">FAQ</a>
+                    </div>
+                </li>
             </ul>
             <form class="searchBar" th:action="@{/products}" method="get">
                 <input type="text" placeholder="Search" id="searchContent" name="q" th:value="${query}">
