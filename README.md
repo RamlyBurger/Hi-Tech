@@ -152,6 +152,10 @@ Hi-Tech/
 `-- src/test/java/     # Repository, security, and MVC flow tests
 ```
 
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
+
 ## Notes
 
 This project is the course assignment ecommerce prototype for AACS1483 Web Design and Development. Checkout uses simulated payment only; no real payment gateway is connected.
