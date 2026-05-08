@@ -1,16 +1,20 @@
 package com.hitech.commerce.web;
 
 import java.security.Principal;
+import java.util.NoSuchElementException;
 
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.hitech.commerce.service.CartService;
 import com.hitech.commerce.service.OrderService;
@@ -64,5 +68,15 @@ public class CheckoutController {
     public String orders(Principal principal, Model model) {
         model.addAttribute("orders", orderService.ordersFor(principal.getName()));
         return "orders";
+    }
+
+    @GetMapping("/orders/{id}")
+    public String order(@PathVariable Long id, Principal principal, Model model) {
+        try {
+            model.addAttribute("order", orderService.orderFor(principal.getName(), id));
+            return "order-detail";
+        } catch (NoSuchElementException ex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found", ex);
+        }
     }
 }

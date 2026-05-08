@@ -2,6 +2,7 @@ package com.hitech.commerce.service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,5 +69,11 @@ public class OrderService {
     @Transactional(readOnly = true)
     public List<CustomerOrder> ordersFor(String username) {
         return orderRepository.findByUserAccountUsernameOrderByCreatedAtDesc(username);
+    }
+
+    @Transactional(readOnly = true)
+    public CustomerOrder orderFor(String username, Long orderId) {
+        return orderRepository.findByIdAndUserAccountUsername(orderId, username)
+                .orElseThrow(() -> new NoSuchElementException("Order not found"));
     }
 }

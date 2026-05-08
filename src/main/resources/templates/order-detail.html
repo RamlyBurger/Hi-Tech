@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orders</title>
+    <title th:text="'Order #' + ${order.id}">Order Detail</title>
     <link rel="icon" th:href="@{/icon/logo.png}">
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
@@ -14,19 +14,15 @@
 <body class="legacy-page">
 <header th:replace="fragments :: header"></header>
 
-<p th:if="${orderMessage}" class="alert success" th:text="${orderMessage}">Order completed</p>
-
 <section class="order-history">
-    <div th:if="${#lists.isEmpty(orders)}" class="cart-empty">
-        <h1>No orders yet</h1>
-        <p>Complete checkout to create an order.</p>
-        <a th:href="@{/products}">Shop products</a>
-    </div>
-
-    <article th:each="order : ${orders}" class="order-card">
-        <h2><a th:href="@{/orders/{id}(id=${order.id})}" th:text="'Order #' + ${order.id}">Order #1</a></h2>
+    <article class="order-card">
+        <p><a th:href="@{/orders}">&larr; Back to orders</a></p>
+        <h1 th:text="'Order #' + ${order.id}">Order #1</h1>
         <p th:text="${order.createdAt}">Created</p>
         <p th:text="${order.status} + ' / ' + ${order.paymentStatus}">Status</p>
+        <p th:text="${order.customerName}">Customer name</p>
+        <p th:text="${order.email}">customer@example.com</p>
+        <p th:text="${order.address}">Shipping address</p>
         <strong th:text="'RM ' + ${#numbers.formatDecimal(order.totalAmount, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
         <table>
             <thead>
