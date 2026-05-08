@@ -19,12 +19,6 @@ spring:
 
 server:
   port: ${SERVER_PORT:8080}
-  servlet:
-    session:
-      cookie:
-        http-only: true
-        same-site: strict
-        secure: ${SESSION_COOKIE_SECURE:false}
 
 hitech:
   payment:

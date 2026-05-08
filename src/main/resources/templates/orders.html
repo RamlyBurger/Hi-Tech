@@ -24,7 +24,7 @@
     </div>
 
     <article th:each="order : ${orders}" class="order-card">
-        <h2><a th:href="@{/orders/{id}(id=${order.id})}" th:text="'Order #' + ${order.id}">Order #1</a></h2>
+        <h2 th:text="'Order #' + ${order.id}">Order #1</h2>
         <p th:text="${order.createdAt}">Created</p>
         <p th:text="${order.status} + ' / ' + ${order.paymentStatus}">Status</p>
         <strong th:text="'RM ' + ${#numbers.formatDecimal(order.totalAmount, 1, 'COMMA', 2, 'POINT')}">RM 0.00</strong>
