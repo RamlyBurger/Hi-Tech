@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.hitech.commerce.domain.Promotion;
@@ -27,7 +26,6 @@ public class PromotionForm {
 
     @NotBlank
     @Size(max = 40)
-    @Pattern(regexp = "red|purple|gold|green|blue|orange|darkolivegreen|black|#[0-9A-Fa-f]{6}", message = "Choose a supported highlight color")
     private String highlightColor = "blue";
 
     @NotNull

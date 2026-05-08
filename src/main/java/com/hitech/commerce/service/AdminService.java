@@ -25,15 +25,13 @@ public class AdminService {
     private final CategoryRepository categoryRepository;
     private final StoreEventRepository eventRepository;
     private final PromotionRepository promotionRepository;
-    private final AuditService auditService;
 
     public AdminService(ProductRepository productRepository, CategoryRepository categoryRepository,
-            StoreEventRepository eventRepository, PromotionRepository promotionRepository, AuditService auditService) {
+            StoreEventRepository eventRepository, PromotionRepository promotionRepository) {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
         this.eventRepository = eventRepository;
         this.promotionRepository = promotionRepository;
-        this.auditService = auditService;
     }
 
     @Transactional(readOnly = true)
@@ -70,16 +68,13 @@ public class AdminService {
         product.setDetailImagePath(form.getDetailImagePath());
         product.setCategory(category);
         product.setActive(form.isActive());
-        Product saved = productRepository.save(product);
-        auditService.record("PRODUCT_SAVED", "Product", saved.getId(), saved.getSlug());
-        return saved;
+        return productRepository.save(product);
     }
 
     @Transactional
     public void deactivateProduct(Long id) {
         Product product = product(id);
         product.setActive(false);
-        auditService.record("PRODUCT_DEACTIVATED", "Product", product.getId(), product.getSlug());
     }
 
     @Transactional(readOnly = true)
@@ -102,16 +97,13 @@ public class AdminService {
         event.setEventDate(form.getEventDate());
         event.setEventTime(form.getEventTime());
         event.setActive(form.isActive());
-        StoreEvent saved = eventRepository.save(event);
-        auditService.record("EVENT_SAVED", "StoreEvent", saved.getId(), saved.getName());
-        return saved;
+        return eventRepository.save(event);
     }
 
     @Transactional
     public void deactivateEvent(Long id) {
         StoreEvent event = event(id);
         event.setActive(false);
-        auditService.record("EVENT_DEACTIVATED", "StoreEvent", event.getId(), event.getName());
     }
 
     @Transactional(readOnly = true)
@@ -137,15 +129,12 @@ public class AdminService {
         promotion.setStartsOn(form.getStartsOn());
         promotion.setEndsOn(form.getEndsOn());
         promotion.setActive(form.isActive());
-        Promotion saved = promotionRepository.save(promotion);
-        auditService.record("PROMOTION_SAVED", "Promotion", saved.getId(), saved.getTitle());
-        return saved;
+        return promotionRepository.save(promotion);
     }
 
     @Transactional
     public void deactivatePromotion(Long id) {
         Promotion promotion = promotion(id);
         promotion.setActive(false);
-        auditService.record("PROMOTION_DEACTIVATED", "Promotion", promotion.getId(), promotion.getTitle());
     }
 }

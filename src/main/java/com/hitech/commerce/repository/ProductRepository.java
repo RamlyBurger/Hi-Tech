@@ -13,10 +13,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Optional<Product> findBySlug(String slug);
 
-    Optional<Product> findBySlugAndActiveTrue(String slug);
-
-    Optional<Product> findByIdAndActiveTrue(Long id);
-
     List<Product> findByActiveTrueOrderByNameAsc();
 
     List<Product> findByCategory_CodeAndActiveTrueOrderByNameAsc(String categoryCode);

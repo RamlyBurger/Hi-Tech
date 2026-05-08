@@ -7,7 +7,6 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.hitech.commerce.domain.Product;
@@ -18,7 +17,6 @@ public class ProductForm {
 
     @NotBlank
     @Size(max = 120)
-    @Pattern(regexp = "^[a-z0-9]+(?:-[a-z0-9]+)*$", message = "Use a lowercase URL slug")
     private String slug;
 
     @NotBlank
@@ -44,12 +42,10 @@ public class ProductForm {
 
     @NotBlank
     @Size(max = 255)
-    @Pattern(regexp = "^/images/[-A-Za-z0-9._() ]+\\.(?i:png|jpe?g|gif|webp)$", message = "Use a local image path under /images")
     private String imagePath;
 
     @NotBlank
     @Size(max = 255)
-    @Pattern(regexp = "^/images/[-A-Za-z0-9._() ]+\\.(?i:png|jpe?g|gif|webp)$", message = "Use a local image path under /images")
     private String detailImagePath;
 
     @NotNull

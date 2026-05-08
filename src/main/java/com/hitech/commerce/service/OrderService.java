@@ -24,15 +24,13 @@ public class OrderService {
     private final CustomerOrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final UserAccountRepository userAccountRepository;
-    private final AuditService auditService;
 
     public OrderService(CartService cartService, CustomerOrderRepository orderRepository,
-            ProductRepository productRepository, UserAccountRepository userAccountRepository, AuditService auditService) {
+            ProductRepository productRepository, UserAccountRepository userAccountRepository) {
         this.cartService = cartService;
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;
         this.userAccountRepository = userAccountRepository;
-        this.auditService = auditService;
     }
 
     @Transactional
@@ -60,7 +58,6 @@ public class OrderService {
         order.setStatus(OrderStatus.COMPLETED);
         order.setPaymentStatus(PaymentStatus.SIMULATED);
         CustomerOrder saved = orderRepository.save(order);
-        auditService.record("ORDER_CHECKOUT", "CustomerOrder", saved.getId(), username);
         cartService.clear();
         return saved;
     }
