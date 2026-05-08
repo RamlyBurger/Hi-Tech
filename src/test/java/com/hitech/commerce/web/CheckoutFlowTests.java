@@ -1,6 +1,7 @@
 package com.hitech.commerce.web;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -17,6 +18,8 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.hitech.commerce.repository.AuditLogRepository;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
@@ -24,6 +27,9 @@ class CheckoutFlowTests {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private AuditLogRepository auditLogRepository;
 
     @Test
     void customerCanAddToCartCheckoutAndViewOrder() throws Exception {
@@ -60,5 +66,11 @@ class CheckoutFlowTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Order #")))
                 .andExpect(content().string(containsString("Dell XPS 8950")));
+
+        assertThat(auditLogRepository.findByActionOrderByCreatedAtDesc("ORDER_CHECKOUT"))
+                .anySatisfy(log -> {
+                    assertThat(log.getActor()).isEqualTo("customer");
+                    assertThat(log.getTargetType()).isEqualTo("CustomerOrder");
+                });
     }
 }

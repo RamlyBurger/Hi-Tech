@@ -47,7 +47,7 @@ public class CatalogService {
     }
 
     public Product getProduct(String slug) {
-        return productRepository.findBySlug(slug)
+        return productRepository.findBySlugAndActiveTrue(slug)
                 .orElseThrow(() -> new IllegalArgumentException("Unknown product: " + slug));
     }
 }

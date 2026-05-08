@@ -1,6 +1,8 @@
 package com.hitech.commerce.web;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
@@ -14,8 +16,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.math.BigDecimal;
+
+import com.hitech.commerce.domain.Category;
+import com.hitech.commerce.domain.Product;
+import com.hitech.commerce.repository.AuditLogRepository;
+import com.hitech.commerce.repository.CategoryRepository;
+import com.hitech.commerce.repository.ProductRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -24,6 +35,15 @@ class SecurityFlowTests {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
+    private AuditLogRepository auditLogRepository;
 
     @Test
     void publicStorefrontPagesAreVisible() throws Exception {
@@ -60,6 +80,72 @@ class SecurityFlowTests {
     }
 
     @Test
+    void mutatingRoutesRejectMissingCsrfToken() throws Exception {
+        mockMvc.perform(post("/admin/products").with(user("admin").roles("ADMIN", "CUSTOMER")))
+                .andExpect(status().isForbidden());
+
+        mockMvc.perform(post("/cart/items").with(user("customer").roles("CUSTOMER"))
+                .param("productId", "1")
+                .param("quantity", "1"))
+                .andExpect(status().isForbidden());
+
+        mockMvc.perform(post("/checkout").with(user("customer").roles("CUSTOMER"))
+                .param("customerName", "Demo Customer")
+                .param("email", "customer@hitech.local")
+                .param("address", "Jalan Segamat / Labis, Johor")
+                .param("paymentMethod", "Simulated card"))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    void inactiveProductsCannotBeViewedOrAddedToCart() throws Exception {
+        Product inactiveProduct = saveProduct("inactive-security-product", "Inactive Security Product", false);
+        MockHttpSession session = new MockHttpSession();
+
+        mockMvc.perform(get("/products/item/" + inactiveProduct.getSlug()))
+                .andExpect(status().isNotFound());
+
+        mockMvc.perform(post("/cart/items")
+                .session(session)
+                .with(user("customer").roles("CUSTOMER"))
+                .with(csrf())
+                .param("productId", inactiveProduct.getId().toString())
+                .param("quantity", "1"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/cart"));
+
+        mockMvc.perform(get("/cart")
+                .session(session)
+                .with(user("customer").roles("CUSTOMER")))
+                .andExpect(status().isOk())
+                .andExpect(content().string(not(containsString("Inactive Security Product"))));
+    }
+
+    @Test
+    void cartDropsProductThatBecomesInactiveAfterItWasAdded() throws Exception {
+        Product product = saveProduct("cart-deactivated-product", "Cart Deactivated Product", true);
+        MockHttpSession session = new MockHttpSession();
+
+        mockMvc.perform(post("/cart/items")
+                .session(session)
+                .with(user("customer").roles("CUSTOMER"))
+                .with(csrf())
+                .param("productId", product.getId().toString())
+                .param("quantity", "1"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/cart"));
+
+        product.setActive(false);
+        productRepository.save(product);
+
+        mockMvc.perform(get("/cart")
+                .session(session)
+                .with(user("customer").roles("CUSTOMER")))
+                .andExpect(status().isOk())
+                .andExpect(content().string(not(containsString("Cart Deactivated Product"))));
+    }
+
+    @Test
     void adminCanCreateProduct() throws Exception {
         mockMvc.perform(post("/admin/products")
                 .with(user("admin").roles("ADMIN", "CUSTOMER"))
@@ -80,5 +166,17 @@ class SecurityFlowTests {
         mockMvc.perform(get("/products/item/mockmvc-admin-product"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("MockMvc Admin Product")));
+
+        Product product = productRepository.findBySlug("mockmvc-admin-product").orElseThrow();
+        assertThat(auditLogRepository.existsByActionAndTargetTypeAndTargetId(
+                "PRODUCT_SAVED", "Product", product.getId())).isTrue();
+    }
+
+    private Product saveProduct(String slug, String name, boolean active) {
+        Category category = categoryRepository.findByCode("desktop").orElseThrow();
+        Product product = new Product(slug, name, "Product used by security tests.",
+                BigDecimal.valueOf(99), 0, 5, "/images/desktop.jpg", "/images/desktop1.jpg", category);
+        product.setActive(active);
+        return productRepository.save(product);
     }
 }

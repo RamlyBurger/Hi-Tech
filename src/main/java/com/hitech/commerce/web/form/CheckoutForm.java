@@ -2,6 +2,7 @@ package com.hitech.commerce.web.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class CheckoutForm {
@@ -21,6 +22,7 @@ public class CheckoutForm {
 
     @NotBlank
     @Size(max = 80)
+    @Pattern(regexp = "Simulated card|Simulated e-wallet|Simulated online banking", message = "Choose a supported payment method")
     private String paymentMethod = "Simulated card";
 
     public String getCustomerName() {
