@@ -1,6 +1,7 @@
 package com.hitech.commerce.security;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -24,7 +25,8 @@ public class JpaUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userAccountRepository.findByUsername(username)
+        String normalizedUsername = username == null ? "" : username.trim().toLowerCase(Locale.ROOT);
+        return userAccountRepository.findByUsernameIgnoreCase(normalizedUsername)
                 .map(account -> {
                     List<SimpleGrantedAuthority> authorities = account.getRoles().stream()
                             .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))

@@ -17,6 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 import com.hitech.commerce.web.form.CheckoutForm;
 import com.hitech.commerce.web.form.ProductForm;
 import com.hitech.commerce.web.form.PromotionForm;
+import com.hitech.commerce.web.form.RegistrationForm;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -35,6 +36,19 @@ class FormValidationTests {
 
         assertThat(messagesFor(validator.validate(form)))
                 .contains("Choose a supported payment method");
+    }
+
+    @Test
+    void registrationRejectsUnsafeUsernameAndWeakPassword() {
+        RegistrationForm form = new RegistrationForm();
+        form.setUsername("../admin");
+        form.setEmail("new-customer@hitech.local");
+        form.setFullName("New Customer");
+        form.setPassword("password");
+
+        assertThat(messagesFor(validator.validate(form)))
+                .contains("Use 3-80 letters, numbers, dots, underscores, or hyphens")
+                .contains("Use at least one letter and one number");
     }
 
     @Test

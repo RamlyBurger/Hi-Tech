@@ -1,5 +1,6 @@
 package com.hitech.commerce.service;
 
+import java.util.Locale;
 import java.util.Set;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,8 +26,8 @@ public class AccountService {
     @Transactional
     public UserAccount registerCustomer(RegistrationForm form) {
         UserAccount account = new UserAccount(
-                form.getUsername().trim(),
-                form.getEmail().trim(),
+                normalizeIdentity(form.getUsername()),
+                normalizeIdentity(form.getEmail()),
                 form.getFullName().trim(),
                 passwordEncoder.encode(form.getPassword()),
                 Set.of(Role.CUSTOMER));
@@ -35,11 +36,15 @@ public class AccountService {
 
     @Transactional(readOnly = true)
     public boolean usernameExists(String username) {
-        return userAccountRepository.existsByUsername(username);
+        return userAccountRepository.existsByUsernameIgnoreCase(normalizeIdentity(username));
     }
 
     @Transactional(readOnly = true)
     public boolean emailExists(String email) {
-        return userAccountRepository.existsByEmail(email);
+        return userAccountRepository.existsByEmailIgnoreCase(normalizeIdentity(email));
+    }
+
+    private String normalizeIdentity(String value) {
+        return value == null ? "" : value.trim().toLowerCase(Locale.ROOT);
     }
 }

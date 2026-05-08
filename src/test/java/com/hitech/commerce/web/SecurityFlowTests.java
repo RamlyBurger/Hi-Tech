@@ -71,11 +71,25 @@ class SecurityFlowTests {
     @Test
     void seededCustomerCanLogin() throws Exception {
         mockMvc.perform(post("/login").with(csrf())
-                .param("username", "customer")
+                .param("username", "Customer")
                 .param("password", "password"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/"))
                 .andExpect(authenticated().withUsername("customer"));
+    }
+
+    @Test
+    void registrationRejectsCaseInsensitiveDuplicateIdentity() throws Exception {
+        mockMvc.perform(post("/register").with(csrf())
+                .param("username", "Customer")
+                .param("email", "CUSTOMER@HITECH.LOCAL")
+                .param("fullName", "Duplicate Customer")
+                .param("password", "Password1"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/login"))
+                .andExpect(result -> assertThat(result.getFlashMap().get("authMode")).isEqualTo("register"))
+                .andExpect(result -> assertThat(result.getFlashMap()
+                        .containsKey("org.springframework.validation.BindingResult.registrationForm")).isTrue());
     }
 
     @Test
